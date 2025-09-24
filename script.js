@@ -1,130 +1,114 @@
-window.addEventListener('DOMContentLoaded', () => {
+// ==== CONFIGURE FIREBASE ====
+const firebaseConfig = {
+  apiKey: "AIzaSyCygRKrnhEecPrhRMJZUm1sVKVrZYUbWLY",
+  authDomain: "fredportfolio-7a53c.firebaseapp.com",
+  databaseURL: "https://fredportfolio-7a53c-default-rtdb.firebaseio.com",
+  projectId: "fredportfolio-7a53c",
+  storageBucket: "fredportfolio-7a53c.appspot.com",
+  messagingSenderId: "586695046110",
+  appId: "1:586695046110:web:b16ad1db078b359c3fe34f"
+};
 
-  // ---------- MAPBOX ----------
-  const MAPBOX_TOKEN = 'pk.eyJ1IjoiZmVkcmktMjU2IiwiYSI6ImNtZnJ6dTg2MzBjM2QyanF5cDJ0cDlwZGMifQ.Ttb_MrE99t7YjMFORnEg1g';
-  mapboxgl.accessToken = MAPBOX_TOKEN;
+firebase.initializeApp(firebaseConfig);
+const auth = firebase.auth();
+const db = firebase.database();
 
-  const map = new mapboxgl.Map({
-    container: 'map',
-    style: 'mapbox://styles/mapbox/streets-v12',
-    center: [32.58, 0.3476],
-    zoom: 12
-  });
-
-  let myMarker = null;
-  let watchId = null;
-  let otherMarkers = {};
-
-  // ---------- FIREBASE ----------
-  const firebaseConfig = {
-    apiKey: "AIzaSyCygRKrnhEecPrhRMJZUm1sVKVrZYUbWLY",
-    authDomain: "fredportfolio-7a53c.firebaseapp.com",
-    projectId: "fredportfolio-7a53c",
-    storageBucket: "fredportfolio-7a53c.firebasestorage.app",
-    messagingSenderId: "586695046110",
-    appId: "1:586695046110:web:b16ad1db078b359c3fe34f"
-  };
-
-  firebase.initializeApp(firebaseConfig);
-  const auth = firebase.auth();
-  const db = firebase.database();
-
-  // ---------- UI ----------
-  const toggle = document.getElementById('shareToggle');
-  const signinBtn = document.getElementById('signin');
-  const stopBtn = document.getElementById('stop');
-  const status = document.getElementById('status');
-  const simulateBtn = document.getElementById('simulate');
-
-  // ---------- AUTH ----------
-  signinBtn.addEventListener('click', async () => {
-    const email = prompt('Email:'); if(!email) return;
-    const pw = prompt('Password:'); if(!pw) return;
-
-    try {
-      await auth.signInWithEmailAndPassword(email, pw);
-      alert('Signed in!');
-    } catch(err) {
-      if(err.code === 'auth/user-not-found') {
-        try {
-          await auth.createUserWithEmailAndPassword(email, pw);
-          alert('Account created!');
-        } catch(e) { alert('Signup error: ' + e.message); }
-      } else alert('Sign-in error: ' + err.message);
-    }
-  });
-
-  auth.onAuthStateChanged(u => {
-    if(u){ signinBtn.disabled = true; signinBtn.textContent = 'Signed in'; }
-    else { signinBtn.disabled = false; signinBtn.textContent = 'Sign In / Sign Up'; }
-  });
-
-  // ---------- LOCATION SHARING ----------
-  toggle.addEventListener('change', () => {
-    if (!toggle.checked) { stopSharing(); return; }
-    if (!auth.currentUser) { alert('Sign in first'); toggle.checked=false; return; }
-    if (!('geolocation' in navigator)) { alert('Geolocation not supported'); toggle.checked=false; return; }
-
-    status.textContent = 'Requesting location permission...';
-
-    watchId = navigator.geolocation.watchPosition(pos => {
-      const lat = pos.coords.latitude, lon = pos.coords.longitude;
-      const payload = { uid: auth.currentUser.uid, email: auth.currentUser.email, lat, lon, ts: Date.now() };
-      db.ref('locations/' + auth.currentUser.uid).set(payload).catch(console.error);
-
-      if(!myMarker){
-        myMarker = new mapboxgl.Marker({color:'#3333ff'}).setLngLat([lon,lat]).addTo(map);
-        map.easeTo({center:[lon,lat], zoom:14});
-      } else { myMarker.setLngLat([lon,lat]); }
-
-      status.textContent = `Sharing: ${lat.toFixed(5)}, ${lon.toFixed(5)}`;
-      stopBtn.disabled = false;
-    }, err => {
-      status.textContent = 'Geolocation error: ' + err.message;
-      toggle.checked = false;
-    }, { enableHighAccuracy:true, maximumAge:2000, timeout:10000 });
-  });
-
-  function stopSharing(){
-    if(watchId !== null) { navigator.geolocation.clearWatch(watchId); watchId=null; }
-    if(auth.currentUser) db.ref('locations/' + auth.currentUser.uid).remove().catch(console.error);
-    if(myMarker){ myMarker.remove(); myMarker=null; }
-    status.textContent = 'Not sharing';
-    stopBtn.disabled = true;
-    toggle.checked = false;
-  }
-
-  stopBtn.addEventListener('click', stopSharing);
-
-  // ---------- SIMULATED PHONES ----------
-  simulateBtn.addEventListener('click', async () => {
-    const paths = [
-      [[32.5825,0.3476],[32.5840,0.3490],[32.5855,0.3510],[32.5870,0.3530]],
-      [[32.5800,0.3480],[32.5820,0.3500],[32.5840,0.3520],[32.5860,0.3540]],
-      [[32.5830,0.3460],[32.5850,0.3485],[32.5870,0.3510],[32.5890,0.3535]]
-    ];
-
-    for(let step=0; step<paths[0].length; step++){
-      paths.forEach((path,index) => {
-        const [lon,lat] = path[step];
-        const uid = 'demo'+index;
-        const payload = { uid, lat, lon, ts: Date.now() };
-        db.ref('locations/'+uid).set(payload);
-
-        if(otherMarkers[uid]){
-          otherMarkers[uid].setLngLat([lon,lat]);
-        } else {
-          otherMarkers[uid] = new mapboxgl.Marker({color:'#ffcc00'})
-            .setLngLat([lon,lat])
-            .setPopup(new mapboxgl.Popup({offset:25}).setHTML(`<b>Demo Phone ${index+1}</b><br>Last update: ${new Date().toLocaleTimeString()}`))
-            .addTo(map);
-        }
-      });
-      await new Promise(r=>setTimeout(r,700));
-    }
-    status.textContent = 'Simulation finished';
-  });
-
-  window.addEventListener('beforeunload', ()=>{ if(auth.currentUser) db.ref('locations/' + auth.currentUser.uid).remove(); });
-
+// ==== CONFIGURE MAPBOX ====
+mapboxgl.accessToken = "pk.eyJ1IjoiZmVkcmktMjU2IiwiYSI6ImNtZnJ6dTg2MzBjM2QyanF5cDJ0cDlwZGMifQ.Ttb_MrE99t7YjMFORnEg1g";
+const map = new mapboxgl.Map({
+  container: "map",
+  style: "mapbox://styles/mapbox/streets-v12",
+  center: [30.75, -0.6], // Uganda center
+  zoom: 6
 });
+
+// ==== UI BUTTONS ====
+const loginBtn = document.getElementById("login");
+const logoutBtn = document.getElementById("logout");
+const shareBtn = document.getElementById("share");
+const stopBtn = document.getElementById("stop");
+const simulateBtn = document.getElementById("simulate");
+
+let userMarker = null;
+let watchId = null;
+
+// ==== AUTH ====
+loginBtn.onclick = () => {
+  const provider = new firebase.auth.GoogleAuthProvider();
+  auth.signInWithPopup(provider);
+};
+
+logoutBtn.onclick = () => auth.signOut();
+
+auth.onAuthStateChanged(user => {
+  if (user) {
+    loginBtn.style.display = "none";
+    logoutBtn.style.display = "inline";
+    shareBtn.style.display = "inline";
+  } else {
+    loginBtn.style.display = "inline";
+    logoutBtn.style.display = "none";
+    shareBtn.style.display = "none";
+    stopBtn.style.display = "none";
+  }
+});
+
+// ==== LOCATION SHARING ====
+shareBtn.onclick = () => {
+  if (navigator.geolocation) {
+    watchId = navigator.geolocation.watchPosition(pos => {
+      const { latitude, longitude } = pos.coords;
+
+      // Save to Firebase
+      const uid = auth.currentUser.uid;
+      db.ref("locations/" + uid).set({ lat: latitude, lng: longitude });
+
+      // Show marker
+      if (userMarker) userMarker.remove();
+      userMarker = new mapboxgl.Marker({ color: "blue" })
+        .setLngLat([longitude, latitude])
+        .setPopup(new mapboxgl.Popup().setText("You"))
+        .addTo(map);
+
+      map.flyTo({ center: [longitude, latitude], zoom: 14 });
+    });
+
+    shareBtn.style.display = "none";
+    stopBtn.style.display = "inline";
+  }
+};
+
+stopBtn.onclick = () => {
+  if (watchId) navigator.geolocation.clearWatch(watchId);
+  stopBtn.style.display = "none";
+  shareBtn.style.display = "inline";
+};
+
+// ==== SIMULATE OTHER PHONES ====
+let demoMarkers = [];
+simulateBtn.onclick = () => {
+  // Clear old
+  demoMarkers.forEach(m => m.remove());
+  demoMarkers = [];
+
+  const phones = [
+    { id: "Phone A", coords: [30.75, -0.6] },
+    { id: "Phone B", coords: [30.8, -0.62] },
+    { id: "Phone C", coords: [30.7, -0.58] }
+  ];
+
+  phones.forEach(p => {
+    const marker = new mapboxgl.Marker({ color: "yellow" })
+      .setLngLat(p.coords)
+      .setPopup(new mapboxgl.Popup().setText(p.id))
+      .addTo(map);
+    demoMarkers.push(marker);
+
+    // Simulate movement
+    setInterval(() => {
+      p.coords[0] += (Math.random() - 0.5) * 0.01;
+      p.coords[1] += (Math.random() - 0.5) * 0.01;
+      marker.setLngLat(p.coords);
+    }, 3000);
+  });
+};
