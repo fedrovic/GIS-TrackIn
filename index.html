@@ -2,37 +2,29 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Real-Time Tracker (Demo)</title>
+  <title>Phone Tracker Demo</title>
   <link rel="stylesheet" href="style.css">
-  <link href="https://api.mapbox.com/mapbox-gl-js/v2.19.0/mapbox-gl.css" rel="stylesheet" />
+  <!-- Mapbox CSS -->
+  <link href="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.css" rel="stylesheet">
 </head>
 <body>
-  <header>
-    <h1>Real-Time Tracker (Demo)</h1>
-  </header>
-
-  <main>
-    <div class="controls">
-      <button id="signin">Sign In / Sign Up</button>
-      <label><input type="checkbox" id="shareToggle"> Share My Location</label>
-      <button id="stop" disabled>Stop Sharing</button>
-      <button id="simulate">Simulate Phones</button>
-    </div>
-
-    <div id="map"></div>
-    <div id="status"></div>
-  </main>
+  <h2>📍 Phone Tracker Demo</h2>
+  <div class="controls">
+    <button id="login">Sign In</button>
+    <button id="logout" style="display:none;">Sign Out</button>
+    <button id="share" style="display:none;">Start Sharing</button>
+    <button id="stop" style="display:none;">Stop Sharing</button>
+    <button id="simulate">Simulate Phones</button>
+  </div>
+  <div id="map"></div>
 
   <!-- Firebase -->
-  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-auth-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-database-compat.js"></script>
-
+  <script src="https://www.gstatic.com/firebasejs/10.12.3/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.3/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.3/firebase-database.js"></script>
   <!-- Mapbox -->
-  <script src="https://api.mapbox.com/mapbox-gl-js/v2.19.0/mapbox-gl.js"></script>
-
-  <!-- JS -->
-  <script src="app.js"></script>
+  <script src="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.js"></script>
+  <!-- Your Script -->
+  <script src="script.js"></script>
 </body>
-</html>
+    </html>
