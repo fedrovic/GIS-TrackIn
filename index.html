@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Agocare - Home</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Doctor's Dashboard - Agocare</title>
+    <link rel="stylesheet" href="doctor.css">
 </head>
 <body>
     <!-- Header -->
@@ -23,10 +23,10 @@
         </div>
         <div class="header-right">
             <div class="user-info">
-                <div class="user-avatar">JD</div>
-                <span>Jane Doe</span>
+                <div class="user-avatar">DN</div>
+                <span>Dr. Nabirye</span>
             </div>
-            <button class="ask-question-btn" onclick="openQuestionForm()">Ask Question</button>
+            <button class="ask-question-btn">Ask Question</button>
         </div>
     </header>
 
@@ -35,207 +35,195 @@
         <!-- Left Sidebar -->
         <aside class="left-sidebar">
             <nav class="nav-section">
+                <div class="category-header">MAIN</div>
                 <div class="nav-item active">
                     <span class="nav-icon">🏠</span>
-                    <span>Home</span>
+                    <span>Dashboard</span>
                 </div>
                 <div class="nav-item">
-                    <span class="nav-icon">🏥</span>
-                    <span>Medical Centres</span>
+                    <span class="nav-icon">❓</span>
+                    <span>Questions Feed</span>
                 </div>
                 <div class="nav-item">
-                    <span class="nav-icon">👤</span>
-                    <span>My Dashboard</span>
+                    <span class="nav-icon">👥</span>
+                    <span>My Patients</span>
+                </div>
+                <div class="nav-item">
+                    <span class="nav-icon">📅</span>
+                    <span>Appointments</span>
                 </div>
             </nav>
 
             <div class="nav-section">
-                <div class="category-header">TOPICS</div>
-                <div class="nav-item">
-                    <span class="nav-icon">👶</span>
-                    <span>Pediatrics</span>
-                </div>
-                <div class="nav-item">
-                    <span class="nav-icon">🤰</span>
-                    <span>Pregnancy</span>
-                </div>
-                <div class="nav-item">
-                    <span class="nav-icon">🦠</span>
-                    <span>Infectious Diseases</span>
-                </div>
-                <div class="nav-item">
-                    <span class="nav-icon">❤️</span>
-                    <span>Sexual Health</span>
-                </div>
-                <div class="nav-item">
-                    <span class="nav-icon">🧠</span>
-                    <span>Mental Health</span>
-                </div>
-                <div class="see-all">See all topics</div>
-            </div>
-
-            <div class="nav-section">
                 <div class="category-header">RESOURCES</div>
                 <div class="nav-item">
-                    <span class="nav-icon">🚨</span>
-                    <span>Emergency Contacts</span>
+                    <span class="nav-icon">📚</span>
+                    <span>Medical Library</span>
                 </div>
                 <div class="nav-item">
-                    <span class="nav-icon">🔧</span>
-                    <span>Admin Panel</span>
+                    <span class="nav-icon">📊</span>
+                    <span>Analytics</span>
+                </div>
+                <div class="nav-item">
+                    <span class="nav-icon">⚙️</span>
+                    <span>Settings</span>
                 </div>
             </div>
         </aside>
 
-        <!-- Main Feed -->
-        <main class="main-feed">
-            <!-- Post Input Box -->
-            <div class="post-input-card">
-                <div class="post-input-header">
-                    <div class="post-avatar">👤</div>
-                    <input type="text" placeholder="What is your health question today?" readonly onclick="openPostForm()">
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Welcome Banner -->
+            <div class="welcome-banner">
+                <h1>Welcome back, Dr. Nabirye!</h1>
+                <p>You have 5 pending questions and 3 appointments today.</p>
+            </div>
+
+            <!-- Stats Cards -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-label">Questions Answered</div>
+                    <div class="stat-value">450</div>
+                    <div class="stat-change positive">↑ 12% this month</div>
                 </div>
-                <div class="post-input-actions">
-                    <button class="input-action-btn">✏️ Ask</button>
-                    <button class="input-action-btn">📝 Post</button>
+                <div class="stat-card">
+                    <div class="stat-label">Patient Followers</div>
+                    <div class="stat-value">1.2K</div>
+                    <div class="stat-change positive">↑ 8% this week</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">Avg Response Time</div>
+                    <div class="stat-value">1hr</div>
+                    <div class="stat-change info">Excellent</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">Rating</div>
+                    <div class="stat-value">4.9</div>
+                    <div class="stat-change rating">⭐⭐⭐⭐⭐</div>
                 </div>
             </div>
 
-            <!-- Post Card 1 -->
-            <article class="post-card">
-                <div class="post-header">
-                    <div class="post-avatar">👤</div>
-                    <div class="post-author-info">
-                        <div class="post-question">What is your health question today?</div>
-                        <div class="post-meta">
-                            <span>✏️ Ask</span>
-                            <span>📝 Post</span>
-                        </div>
+            <!-- Pending Questions Section -->
+            <div class="section-card">
+                <div class="section-header">
+                    <h2>Pending Questions (5)</h2>
+                </div>
+                
+                <div class="question-item">
+                    <div class="question-avatar">👤</div>
+                    <div class="question-content">
+                        <div class="question-category">Pediatrics</div>
+                        <div class="question-text">My 3-year-old child developed a heat rash that won't go away.</div>
+                        <div class="question-meta">Posted by Jane N. • 2 hours ago</div>
                     </div>
+                    <button class="btn-answer urgent">Answer Now</button>
                 </div>
 
-                <div class="post-content">
-                    <div class="post-category">Pediatrics · Posted by Jane N. · 2 hours ago</div>
-                    <h3>My 3-year-old child developed a heat rash that won't go away.</h3>
-                    <p>We live in Bushenyi and it has been very hot lately. The rash is mostly on the neck and back. We tried cool baths but it persists. Is this dangerous?</p>
-                    
-                    <div class="post-image">
-                        <img src="https://via.placeholder.com/600x300/e0e0e0/999?text=Image" alt="Post image">
+                <div class="question-item">
+                    <div class="question-avatar">👤</div>
+                    <div class="question-content">
+                        <div class="question-category">Infectious Diseases</div>
+                        <div class="question-text">Persistent headache and fever in the evenings.</div>
+                        <div class="question-meta">Posted by Anonymous • 5 hours ago • <span class="urgent-tag">Urgent</span></div>
                     </div>
-
-                    <div class="post-author-footer">
-                        <div class="post-avatar">👨‍⚕️</div>
-                        <div>
-                            <strong>Dr. Sarah Nabirye</strong> <span class="verified-badge">✓</span>
-                            <div class="author-specialty">Pediatrician · 140 answers</div>
-                        </div>
-                    </div>
-
-                    <p>Heat rash (prickly) is common in hot weather. Keep the area cool and dry. Good washing helps prevent the rash to spread, even if it's covered or covered by light clothes. If it intensifies or is covered with flu-like symptoms call your doctor.</p>
-
-                    <div class="post-actions">
-                        <button class="action-btn">💬 Discuss (45)</button>
-                        <button class="action-btn">👍 27</button>
-                        <button class="action-btn">🔖</button>
-                        <button class="report-btn">Report</button>
-                    </div>
-                </div>
-            </article>
-
-            <!-- Post Card 2 -->
-            <article class="post-card">
-                <div class="post-image">
-                    <img src="https://via.placeholder.com/600x300/e0e0e0/999?text=Mountain+Image" alt="Post image">
+                    <button class="btn-answer urgent">Answer Now</button>
                 </div>
 
-                <div class="post-author-footer">
-                    <div class="post-avatar">👨‍⚕️</div>
-                    <div>
-                        <strong>Dr. Sarah Nabirye</strong> <span class="verified-badge">✓</span>
+                <div class="question-item">
+                    <div class="question-avatar">👤</div>
+                    <div class="question-content">
+                        <div class="question-category">General Health</div>
+                        <div class="question-text">What vitamins should I take during pregnancy?</div>
+                        <div class="question-meta">Posted by Mary K. • 8 hours ago</div>
                     </div>
+                    <button class="btn-answer">Answer Now</button>
                 </div>
 
-                <div class="post-content">
-                    <p>Heat rash (prickly) is common in hot weather. Keep the area cool and dry. Good washing helps prevent the rash from spreading. If it intensifies or is covered with flu-like symptoms call your doctor.</p>
+                <a href="#" class="view-all-link">View All Questions →</a>
+            </div>
 
-                    <div class="post-actions">
-                        <button class="action-btn">💬 Discuss (45)</button>
-                        <button class="action-btn">👍 27</button>
-                        <button class="action-btn">🔖</button>
-                        <button class="report-btn">Report</button>
-                    </div>
+            <!-- Today's Appointments -->
+            <div class="section-card">
+                <div class="section-header">
+                    <h2>Today's Appointments (3)</h2>
                 </div>
-            </article>
 
-            <!-- Post Card 3 -->
-            <article class="post-card">
-                <div class="post-content">
-                    <div class="post-category">Infectious Diseases · Posted by Anonymous · 5 hours ago</div>
-                    <h3>Persistent headache and fever in the evenings.</h3>
-                    <p>I have been having high fevers only at night for the past 4 days, accompanied by joint pain. Could this be malaria even if I sleep under a net?</p>
-
-                    <div class="post-author-footer">
-                        <div class="post-avatar">👨‍⚕️</div>
-                        <div>
-                            <strong>Dr. John Kamara</strong> <span class="verified-badge">✓</span>
-                            <div class="author-specialty">Internal Medicine · 289 answers</div>
-                        </div>
+                <div class="appointment-item">
+                    <div class="appointment-indicator blue"></div>
+                    <div class="appointment-content">
+                        <div class="appointment-title">10:00 AM - Jane Mukasa</div>
+                        <div class="appointment-details">Pediatric Checkup • Video Call</div>
                     </div>
-
-                    <p>Yes, it is possible. Mosquito nets are not 100% foolproof if there are holes or inconsistent use. Do not self-treat and get a malaria test at the nearest facility. Monitor your symptoms and stay hydrated during the night.</p>
-
-                    <div class="post-actions">
-                        <button class="action-btn">💬 Discuss (45)</button>
-                        <button class="action-btn">👍 27</button>
-                        <button class="action-btn">🔖</button>
-                        <button class="report-btn">Report</button>
-                    </div>
+                    <button class="btn-appointment primary">Join Call</button>
                 </div>
-            </article>
+
+                <div class="appointment-item">
+                    <div class="appointment-indicator green"></div>
+                    <div class="appointment-content">
+                        <div class="appointment-title">2:00 PM - Peter Ouma</div>
+                        <div class="appointment-details">Follow-up Consultation • In-Person</div>
+                    </div>
+                    <button class="btn-appointment secondary">View Details</button>
+                </div>
+
+                <div class="appointment-item">
+                    <div class="appointment-indicator yellow"></div>
+                    <div class="appointment-content">
+                        <div class="appointment-title">4:30 PM - Sarah Nakato</div>
+                        <div class="appointment-details">New Patient • Video Call</div>
+                    </div>
+                    <button class="btn-appointment secondary">View Details</button>
+                </div>
+            </div>
         </main>
 
         <!-- Right Sidebar -->
         <aside class="right-sidebar">
-            <div class="urgent-help-card">
-                <h3>Need Urgent Help?</h3>
-                <p>Connect with verified specialists instantly via chat or video.</p>
-                <button class="talk-to-doctor-btn">🩺 Talk to Doctor</button>
+            <!-- Quick Actions -->
+            <div class="sidebar-card">
+                <h3>Quick Actions</h3>
+                <button class="quick-action-btn primary">📝 Answer Question</button>
+                <button class="quick-action-btn secondary">📅 Schedule Appointment</button>
+                <button class="quick-action-btn tertiary">✏️ Update Profile</button>
             </div>
 
-            <div class="trending-card">
-                <h3>Trending in Uganda</h3>
-                
-                <div class="trending-item">
-                    <div class="trending-title">Fake Drugs</div>
-                    <div class="trending-subtitle">Malaria Prevention in Rainy Season</div>
-                </div>
-
-                <div class="trending-item">
-                    <div class="trending-title">Red Eye (Conjunctivitis) Alert</div>
-                    <div class="trending-subtitle">Jinja Hospital</div>
-                </div>
-
-                <div class="trending-item">
-                    <div class="trending-title">Free Antenatal Care Camps</div>
-                </div>
-
-                <div class="trending-divider"></div>
-
-                <div class="top-contributor">
-                    <h4>Top Contributor</h4>
-                    <div class="contributor-profile">
-                        <div class="contributor-avatar">👨‍⚕️</div>
-                        <div>
-                            <strong>Dr. Sarah Nabirye</strong>
-                            <div class="contributor-stats">Pediatrician · 140 Answers</div>
-                        </div>
+            <!-- Recent Activity -->
+            <div class="sidebar-card">
+                <h3>Recent Activity</h3>
+                <div class="activity-list">
+                    <div class="activity-item">
+                        <div class="activity-text">Jane M. followed you</div>
+                        <div class="activity-time">5 minutes ago</div>
                     </div>
-                    <button class="follow-btn">Follow</button>
+                    <div class="activity-item">
+                        <div class="activity-text">You answered a question</div>
+                        <div class="activity-time">1 hour ago</div>
+                    </div>
+                    <div class="activity-item">
+                        <div class="activity-text">Peter O. rated you ⭐⭐⭐⭐⭐</div>
+                        <div class="activity-time">3 hours ago</div>
+                    </div>
+                    <div class="activity-item">
+                        <div class="activity-text">New appointment booked</div>
+                        <div class="activity-time">5 hours ago</div>
+                    </div>
+                    <div class="activity-item">
+                        <div class="activity-text">Your answer got 15 likes</div>
+                        <div class="activity-time">Yesterday</div>
+                    </div>
                 </div>
+                <a href="#" class="view-all-link">View All Activity →</a>
+            </div>
+
+            <!-- Performance Badge -->
+            <div class="sidebar-card badge-card">
+                <h3>🏆 Top Performer</h3>
+                <p>You're in the top 5% of doctors this month!</p>
+                <button class="badge-btn">View Badge</button>
             </div>
         </aside>
     </div>
 
-    <script src="script.js"></script>
+    <script src="doctor.js"></script>
 </body>
 </html>
