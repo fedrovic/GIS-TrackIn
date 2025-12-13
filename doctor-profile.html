@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dr. Sarah Nabirye - Agocare</title>
+    <link rel="stylesheet" href="doctor.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-left">
+            <div class="logo">Ago<span>care</span></div>
+            <div class="header-icons">
+                <button class="icon-btn">📍</button>
+                <button class="icon-btn">🔔</button>
+                <button class="icon-btn">👤</button>
+            </div>
+            <div class="search-bar">
+                <span>🔍</span>
+                <input type="text" placeholder="Search Agocare...">
+            </div>
+        </div>
+        <div class="header-right">
+            <div class="user-info">
+                <div class="user-avatar">JD</div>
+                <span>Jane Doe</span>
+            </div>
+            <button class="ask-question-btn">Ask Question</button>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <div class="container">
+        <!-- Left Sidebar -->
+        <aside class="left-sidebar">
+            <nav class="nav-section">
+                <div class="nav-item">
+                    <span class="nav-icon">🏠</span>
+                    <span>Home</span>
+                </div>
+                <div class="nav-item">
+                    <span class="nav-icon">🏥</span>
+                    <span>Medical Centres</span>
+                </div>
+                <div class="nav-item">
+                    <span class="nav-icon">👤</span>
+                    <span>My Dashboard</span>
+                </div>
+            </nav>
+
+            <div class="nav-section">
+                <div class="category-header">TOPICS</div>
+                <div class="nav-item">
+                    <span class="nav-icon">👶</span>
+                    <span>Pediatrics</span>
+                </div>
+                <div class="nav-item">
+                    <span class="nav-icon">🤰</span>
+                    <span>Pregnancy</span>
+                </div>
+                <div class="nav-item">
+                    <span class="nav-icon">🦠</span>
+                    <span>Infectious Diseases</span>
+                </div>
+                <div class="nav-item">
+                    <span class="nav-icon">❤️</span>
+                    <span>Sexual Health</span>
+                </div>
+                <div class="nav-item">
+                    <span class="nav-icon">🧠</span>
+                    <span>Mental Health</span>
+                </div>
+                <div class="see-all">See all topics</div>
+            </div>
+
+            <div class="nav-section">
+                <div class="category-header">RESOURCES</div>
+                <div class="nav-item">
+                    <span class="nav-icon">🚨</span>
+                    <span>Emergency Contacts</span>
+                </div>
+                <div class="nav-item">
+                    <span class="nav-icon">🔧</span>
+                    <span>Admin Panel</span>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content profile-content">
+            <!-- Back Button -->
+            <a href="#" class="back-link">← Back to Feed</a>
+
+            <!-- Profile Header -->
+            <div class="profile-header">
+                <div class="profile-cover"></div>
+                <div class="profile-info">
+                    <div class="profile-avatar-large">👨‍⚕️</div>
+                    <div class="profile-details">
+                        <h1>Dr. Sarah Nabirye <span class="verified-badge">✓ Verified</span></h1>
+                        <p class="profile-specialty">Pediatrician • Mulago National Referral Hospital</p>
+                        <div class="profile-stats">
+                            <span><strong>450</strong> Answers</span>
+                            <span><strong>1.2K</strong> Followers</span>
+                            <span class="response-time">⏱ 1 hr response</span>
+                        </div>
+                    </div>
+                    <div class="profile-actions">
+                        <button class="btn-follow">Follow</button>
+                        <button class="btn-ask-question">Ask Question</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- About Section -->
+            <div class="section-card">
+                <div class="section-tabs">
+                    <button class="tab-btn active">About</button>
+                    <button class="tab-btn">Availability</button>
+                </div>
+
+                <div class="tab-content active" id="about-tab">
+                    <h3>About</h3>
+                    <p>Dr. Sarah is a dedicated Pediatrician with over 10 years of experience at Mulago National Referral Hospital. Passionate about community health education and preventative care. Specialized in treating pediatric infections and developmental disorders.</p>
+
+                    <h3 style="margin-top: 24px;">Credentials</h3>
+                    <ul class="credentials-list">
+                        <li>MBChB, Makerere University Medical School</li>
+                        <li>Master of Medicine in Pediatrics, Mbarara University of Science and Technology</li>
+                        <li>Registered with Uganda Medical and Dental Practitioners Council</li>
+                    </ul>
+
+                    <button class="btn-book-appointment">Book Appointment</button>
+                </div>
+
+                <div class="tab-content" id="availability-tab">
+                    <h3>Availability</h3>
+                    <div class="availability-info">
+                        <div class="availability-item">
+                            <strong>Mon - Fri</strong>
+                            <span>9:00 AM - 5:00 PM</span>
+                        </div>
+                        <div class="availability-item">
+                            <strong>Sat</strong>
+                            <span>10:00 AM - 2:00 PM</span>
+                        </div>
+                    </div>
+                    <button class="btn-book-appointment">Book Appointment</button>
+                </div>
+            </div>
+
+            <!-- Recent Answers Section -->
+            <div class="section-card">
+                <h2>Recent Answers</h2>
+
+                <div class="answer-item">
+                    <h4>Can I give my baby honey for cough?</h4>
+                    <p>No, you should not give honey to an infant under 1 year old due to the risk of botulism...</p>
+                    <div class="answer-meta">
+                        <span>👍 45 likes</span>
+                        <span>💬 12 comments</span>
+                        <span>2 days ago</span>
+                    </div>
+                </div>
+
+                <div class="answer-item">
+                    <h4>Best way to treat heat rash?</h4>
+                    <p>Keep the area cool and dry. Use calamine lotion if itching persists...</p>
+                    <div class="answer-meta">
+                        <span>👍 32 likes</span>
+                        <span>💬 8 comments</span>
+                        <span>5 days ago</span>
+                    </div>
+                </div>
+
+                <div class="answer-item">
+                    <h4>When should I start solid foods for my baby?</h4>
+                    <p>Most babies are ready for solid foods around 6 months. Look for signs like sitting with support and showing interest in food...</p>
+                    <div class="answer-meta">
+                        <span>👍 67 likes</span>
+                        <span>💬 23 comments</span>
+                        <span>1 week ago</span>
+                    </div>
+                </div>
+
+                <a href="#" class="view-all-link">View All Answers →</a>
+            </div>
+        </main>
+
+        <!-- Right Sidebar -->
+        <aside class="right-sidebar">
+            <div class="urgent-help-card">
+                <h3>Need Urgent Help?</h3>
+                <p>Connect with verified specialists instantly via chat or video.</p>
+                <button class="talk-to-doctor-btn">🩺 Talk to Doctor</button>
+            </div>
+
+            <div class="trending-card">
+                <h3>Trending in Uganda</h3>
+                
+                <div class="trending-item">
+                    <div class="trending-title">Fake Drugs</div>
+                    <div class="trending-subtitle">Malaria Prevention in Rainy Season</div>
+                </div>
+
+                <div class="trending-item">
+                    <div class="trending-title">Red Eye (Conjunctivitis) Alert</div>
+                    <div class="trending-subtitle">Jinja Hospital</div>
+                </div>
+
+                <div class="trending-item">
+                    <div class="trending-title">Free Antenatal Care Camps</div>
+                </div>
+
+                <div class="trending-divider"></div>
+
+                <div class="top-contributor">
+                    <h4>Top Contributor</h4>
+                    <div class="contributor-profile">
+                        <div class="contributor-avatar">👨‍⚕️</div>
+                        <div>
+                            <strong>Dr. Sarah Nabirye</strong>
+                            <div class="contributor-stats">Pediatrician · 140 Answers</div>
+                        </div>
+                    </div>
+                    <button class="follow-btn">Follow</button>
+                </div>
+            </div>
+        </aside>
+    </div>
+
+    <script src="doctor.js"></script>
+</body>
+</html>
