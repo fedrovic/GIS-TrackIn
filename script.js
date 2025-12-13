@@ -1,103 +1,179 @@
-// Import Firebase modules
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
-import { getDatabase, ref, set, onValue } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-database.js";
-import { getAuth, GoogleAuthProvider, signInWithPopup, signOut, onAuthStateChanged } 
-  from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
+// Home Page JavaScript Functionality
 
-// ✅ Your Firebase config
-const firebaseConfig = {
-  apiKey: "AIzaSyCygRKrnhEecPrhRMJZUm1sVKVrZYUbWLY",
-  authDomain: "fredportfolio-7a53c.firebaseapp.com",
-  databaseURL: "https://fredportfolio-7a53c-default-rtdb.firebaseio.com",
-  projectId: "fredportfolio-7a53c",
-  storageBucket: "fredportfolio-7a53c.firebasestorage.app",
-  messagingSenderId: "586695046110",
-  appId: "1:586695046110:web:b16ad1db078b359c3fe34f"
-};
+// Function to open Question Form
+function openQuestionForm() {
+    alert('Opening Question Form... (This will link to question-form.html)');
+    // Later: window.location.href = 'question-form.html';
+}
 
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const db = getDatabase(app);
-const auth = getAuth(app);
-const provider = new GoogleAuthProvider();
+// Function to open Post Form
+function openPostForm() {
+    alert('Opening Post Form... (This will link to post-form.html)');
+    // Later: window.location.href = 'post-form.html';
+}
 
-// ✅ Mapbox setup
-mapboxgl.accessToken = "pk.eyJ1IjoiZmVkcmktMjU2IiwiYSI6ImNtZnkxN3psZzA2azQya3MzYWo2NjEwdG4ifQ.-tyKAt2LloHxdUYDYfiZMw";
-const map = new mapboxgl.Map({
-  container: "map",
-  style: "mapbox://styles/mapbox/streets-v12",
-  center: [30.0, -1.0], // Default (Uganda area)
-  zoom: 6,
-});
-
-// ✅ Markers
-let userMarker = null;
-let phoneMarker = null;
-
-// 📌 Save user location
-function saveUserLocation(user) {
-  if (navigator.geolocation) {
-    navigator.geolocation.watchPosition((pos) => {
-      const lat = pos.coords.latitude;
-      const lng = pos.coords.longitude;
-
-      set(ref(db, "locations/" + user.uid), {
-        lat,
-        lng,
-        email: user.email
-      });
-
-      // Show user marker (blue)
-      if (userMarker) userMarker.remove();
-      userMarker = new mapboxgl.Marker({ color: "blue" })
-        .setLngLat([lng, lat])
-        .setPopup(new mapboxgl.Popup().setText("You are here"))
-        .addTo(map);
-
-      map.setCenter([lng, lat]);
+// Navigation items functionality
+document.addEventListener('DOMContentLoaded', function() {
+    // Get all navigation items
+    const navItems = document.querySelectorAll('.nav-item');
+    
+    navItems.forEach(item => {
+        item.addEventListener('click', function() {
+            // Remove active class from all items
+            navItems.forEach(nav => nav.classList.remove('active'));
+            
+            // Add active class to clicked item
+            this.classList.add('active');
+            
+            // Get the text content of the clicked item
+            const itemText = this.textContent.trim();
+            
+            // Handle navigation based on clicked item
+            switch(itemText) {
+                case 'Home':
+                    console.log('Already on Home page');
+                    break;
+                case 'Medical Centres':
+                    console.log('Navigate to Medical Centres');
+                    // Later: window.location.href = 'medical-centers.html';
+                    break;
+                case 'My Dashboard':
+                    console.log('Navigate to Dashboard');
+                    // Later: window.location.href = 'patient-dashboard.html';
+                    break;
+                case 'Admin Panel':
+                    console.log('Navigate to Admin Panel');
+                    // Later: window.location.href = 'admin-dashboard.html';
+                    break;
+                default:
+                    console.log('Navigate to topic:', itemText);
+            }
+        });
     });
-  }
-}
-
-// 📌 Track another phone (yellow marker)
-function trackPhones(user) {
-  const locRef = ref(db, "locations");
-  onValue(locRef, (snapshot) => {
-    const data = snapshot.val();
-    if (data) {
-      Object.keys(data).forEach((uid) => {
-        if (uid !== user.uid) {
-          const phone = data[uid];
-          if (phoneMarker) phoneMarker.remove();
-          phoneMarker = new mapboxgl.Marker({ color: "yellow" })
-            .setLngLat([phone.lng, phone.lat])
-            .setPopup(new mapboxgl.Popup().setText("Tracked phone: " + phone.email))
-            .addTo(map);
-        }
-      });
+    
+    // Action buttons functionality
+    const actionButtons = document.querySelectorAll('.action-btn');
+    actionButtons.forEach(btn => {
+        btn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            const btnText = this.textContent.trim();
+            
+            if (btnText.includes('Discuss')) {
+                console.log('Opening discussion...');
+            } else if (btnText.includes('👍')) {
+                // Toggle like
+                const count = parseInt(btnText.match(/\d+/)?.[0] || 0);
+                this.textContent = `👍 ${count + 1}`;
+                console.log('Post liked');
+            } else if (btnText.includes('🔖')) {
+                console.log('Post saved');
+                this.textContent = '✅';
+                setTimeout(() => {
+                    this.textContent = '🔖';
+                }, 1000);
+            }
+        });
+    });
+    
+    // Report button functionality
+    const reportButtons = document.querySelectorAll('.report-btn');
+    reportButtons.forEach(btn => {
+        btn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            const confirm = window.confirm('Are you sure you want to report this content?');
+            if (confirm) {
+                console.log('Content reported');
+                alert('Thank you for your report. Our team will review this content.');
+            }
+        });
+    });
+    
+    // Follow button functionality
+    const followBtn = document.querySelector('.follow-btn');
+    if (followBtn) {
+        followBtn.addEventListener('click', function() {
+            if (this.textContent === 'Follow') {
+                this.textContent = 'Following';
+                this.style.backgroundColor = '#4a90e2';
+                this.style.color = 'white';
+            } else {
+                this.textContent = 'Follow';
+                this.style.backgroundColor = 'transparent';
+                this.style.color = '#4a90e2';
+            }
+        });
     }
-  });
-}
-
-// ✅ Auth buttons
-document.getElementById("signinBtn").addEventListener("click", () => {
-  signInWithPopup(auth, provider).catch((err) => alert(err.message));
+    
+    // Talk to Doctor button functionality
+    const talkToDoctorBtn = document.querySelector('.talk-to-doctor-btn');
+    if (talkToDoctorBtn) {
+        talkToDoctorBtn.addEventListener('click', function() {
+            alert('Connecting you to available doctors...');
+            console.log('Opening doctor consultation interface');
+        });
+    }
+    
+    // Search functionality
+    const searchInput = document.querySelector('.search-bar input');
+    if (searchInput) {
+        searchInput.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                const searchTerm = this.value.trim();
+                if (searchTerm) {
+                    console.log('Searching for:', searchTerm);
+                    alert(`Searching for: ${searchTerm}`);
+                    // Later: window.location.href = `search.html?q=${encodeURIComponent(searchTerm)}`;
+                }
+            }
+        });
+    }
+    
+    // Header icons functionality
+    const headerIcons = document.querySelectorAll('.icon-btn');
+    headerIcons.forEach((icon, index) => {
+        icon.addEventListener('click', function() {
+            switch(index) {
+                case 0: // Location icon
+                    alert('Location: Kampala, Uganda');
+                    break;
+                case 1: // Notification icon
+                    alert('You have 3 new notifications');
+                    break;
+                case 2: // Profile icon
+                    console.log('Opening profile menu');
+                    alert('Profile menu');
+                    break;
+            }
+        });
+    });
+    
+    // See all topics functionality
+    const seeAllBtn = document.querySelector('.see-all');
+    if (seeAllBtn) {
+        seeAllBtn.addEventListener('click', function() {
+            console.log('Showing all topics');
+            alert('Showing all topics...');
+        });
+    }
+    
+    // Post card click functionality (to view full post)
+    const postCards = document.querySelectorAll('.post-card');
+    postCards.forEach(card => {
+        card.addEventListener('click', function(e) {
+            // Don't navigate if clicking on buttons
+            if (e.target.tagName === 'BUTTON') {
+                return;
+            }
+            console.log('Opening full post view');
+        });
+    });
+    
+    // Smooth scroll for page
+    document.documentElement.style.scrollBehavior = 'smooth';
 });
 
-document.getElementById("signoutBtn").addEventListener("click", () => {
-  signOut(auth);
-});
-
-// ✅ Auth state listener
-onAuthStateChanged(auth, (user) => {
-  if (user) {
-    document.getElementById("signinBtn").style.display = "none";
-    document.getElementById("signoutBtn").style.display = "inline-block";
-
-    saveUserLocation(user);
-    trackPhones(user);
-  } else {
-    document.getElementById("signinBtn").style.display = "inline-block";
-    document.getElementById("signoutBtn").style.display = "none";
-  }
+// Handle user info click
+document.querySelector('.user-info')?.addEventListener('click', function() {
+    console.log('Opening user menu');
+    alert('User Menu:\n- My Profile\n- Settings\n- Logout');
 });
