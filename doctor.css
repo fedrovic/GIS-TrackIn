@@ -26,14 +26,16 @@ body {
     flex-direction: column;
     gap: 4px;
     margin-right: 12px;
+    z-index: 1000;
 }
 
 .mobile-menu-btn span {
-    width: 20px;
-    height: 2px;
+    width: 22px;
+    height: 2.5px;
     background-color: #333;
     display: block;
     transition: all 0.3s;
+    border-radius: 2px;
 }
 
 /* Mobile Menu Overlay */
@@ -986,6 +988,39 @@ header {
     color: white;
 }
 
+.btn-edit-profile {
+    background-color: #4a90e2;
+    color: white;
+    border: none;
+    padding: 10px 24px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 14px;
+    transition: background-color 0.2s;
+}
+
+.btn-edit-profile:hover {
+    background-color: #357abd;
+}
+
+.btn-view-public {
+    background: white;
+    border: 1px solid #4a90e2;
+    color: #4a90e2;
+    padding: 10px 24px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 14px;
+    transition: all 0.2s;
+}
+
+.btn-view-public:hover {
+    background-color: #4a90e2;
+    color: white;
+}
+
 .btn-ask-question {
     background-color: #4a90e2;
     color: white;
@@ -1185,51 +1220,4 @@ header {
     }
     
     .container {
-        padding: 12px 16px;
-    }
-    
-    .section-card {
-        padding: 16px;
-    }
-}
-
-@media (max-width: 768px) {
-    header {
-        padding: 12px 16px;
-    }
-    
-    .logo {
-        font-size: 18px;
-    }
-    
-    .ask-question-btn {
-        padding: 8px 16px;
-        font-size: 12px;
-    }
-    
-    .welcome-banner {
-        padding: 20px;
-    }
-    
-    .welcome-banner h1 {
-        font-size: 18px;
-    }
-    
-    .welcome-banner p {
-        font-size: 11px;
-    }
-    
-    .stats-grid {
-        grid-template-columns: 1fr 1fr;
-        gap: 12px;
-    }
-    
-    .stat-card {
-        padding: 16px;
-    }
-    
-    .stat-value {
-        font-size: 24px;
-    }
-    
-    
+        padding: 12px
