@@ -7,22 +7,95 @@
     <link rel="stylesheet" href="doctor.css">
 </head>
 <body>
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-menu-overlay" id="mobileMenuOverlay"></div>
+    
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="mobile-menu-header">
+            <h2>Menu</h2>
+            <button class="mobile-menu-close" id="mobileMenuClose">×</button>
+        </div>
+        
+        <div class="mobile-menu-content">
+            <div class="mobile-menu-section">
+                <div class="mobile-menu-label">MAIN</div>
+                <a href="doctor-dashboard.html" class="mobile-menu-item active">
+                    <span class="nav-icon">🏠</span>
+                    <span>Dashboard</span>
+                </a>
+                <a href="#" class="mobile-menu-item">
+                    <span class="nav-icon">❓</span>
+                    <span>Questions Feed</span>
+                </a>
+                <a href="#" class="mobile-menu-item">
+                    <span class="nav-icon">👥</span>
+                    <span>My Patients</span>
+                </a>
+                <a href="#" class="mobile-menu-item">
+                    <span class="nav-icon">📅</span>
+                    <span>Appointments</span>
+                </a>
+            </div>
+            
+            <div class="mobile-menu-section">
+                <div class="mobile-menu-label">RESOURCES</div>
+                <a href="#" class="mobile-menu-item">
+                    <span class="nav-icon">📚</span>
+                    <span>Medical Library</span>
+                </a>
+                <a href="#" class="mobile-menu-item">
+                    <span class="nav-icon">📊</span>
+                    <span>Analytics</span>
+                </a>
+                <a href="#" class="mobile-menu-item">
+                    <span class="nav-icon">⚙️</span>
+                    <span>Settings</span>
+                </a>
+            </div>
+            
+            <div class="mobile-menu-section">
+                <div class="mobile-menu-label">ACCOUNT</div>
+                <div class="mobile-menu-profile">
+                    <div class="user-avatar">DN</div>
+                    <div>
+                        <div class="mobile-profile-name">Dr. Nabirye</div>
+                        <div class="mobile-profile-specialty">Pediatrician</div>
+                    </div>
+                </div>
+                <a href="doctor-profile.html" class="mobile-menu-item">
+                    <span class="nav-icon">👤</span>
+                    <span>My Profile</span>
+                </a>
+                <a href="#" class="mobile-menu-item">
+                    <span class="nav-icon">🚪</span>
+                    <span>Logout</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
     <!-- Header -->
     <header>
         <div class="header-left">
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
             <div class="logo">Ago<span>care</span></div>
-            <div class="header-icons">
+            <div class="header-icons desktop-only">
                 <button class="icon-btn">📍</button>
                 <button class="icon-btn">🔔</button>
                 <button class="icon-btn">👤</button>
             </div>
-            <div class="search-bar">
+            <div class="search-bar desktop-only">
                 <span>🔍</span>
                 <input type="text" placeholder="Search Agocare...">
             </div>
         </div>
         <div class="header-right">
-            <div class="user-info">
+            <div class="user-info desktop-only">
                 <div class="user-avatar">DN</div>
                 <span>Dr. Nabirye</span>
             </div>
@@ -32,42 +105,42 @@
 
     <!-- Main Container -->
     <div class="container">
-        <!-- Left Sidebar -->
-        <aside class="left-sidebar">
+        <!-- Left Sidebar (Desktop Only) -->
+        <aside class="left-sidebar desktop-only">
             <nav class="nav-section">
                 <div class="category-header">MAIN</div>
-                <div class="nav-item active">
+                <a href="doctor-dashboard.html" class="nav-item active">
                     <span class="nav-icon">🏠</span>
                     <span>Dashboard</span>
-                </div>
-                <div class="nav-item">
+                </a>
+                <a href="#" class="nav-item">
                     <span class="nav-icon">❓</span>
                     <span>Questions Feed</span>
-                </div>
-                <div class="nav-item">
+                </a>
+                <a href="#" class="nav-item">
                     <span class="nav-icon">👥</span>
                     <span>My Patients</span>
-                </div>
-                <div class="nav-item">
+                </a>
+                <a href="#" class="nav-item">
                     <span class="nav-icon">📅</span>
                     <span>Appointments</span>
-                </div>
+                </a>
             </nav>
 
             <div class="nav-section">
                 <div class="category-header">RESOURCES</div>
-                <div class="nav-item">
+                <a href="#" class="nav-item">
                     <span class="nav-icon">📚</span>
                     <span>Medical Library</span>
-                </div>
-                <div class="nav-item">
+                </a>
+                <a href="#" class="nav-item">
                     <span class="nav-icon">📊</span>
                     <span>Analytics</span>
-                </div>
-                <div class="nav-item">
+                </a>
+                <a href="#" class="nav-item">
                     <span class="nav-icon">⚙️</span>
                     <span>Settings</span>
-                </div>
+                </a>
             </div>
         </aside>
 
@@ -79,7 +152,7 @@
                 <p>You have 5 pending questions and 3 appointments today.</p>
             </div>
 
-            <!-- Stats Cards -->
+            <!-- Stats Grid -->
             <div class="stats-grid">
                 <div class="stat-card">
                     <div class="stat-label">Questions Answered</div>
@@ -177,14 +250,14 @@
             </div>
         </main>
 
-        <!-- Right Sidebar -->
-        <aside class="right-sidebar">
+        <!-- Right Sidebar (Desktop Only) -->
+        <aside class="right-sidebar desktop-only">
             <!-- Quick Actions -->
             <div class="sidebar-card">
                 <h3>Quick Actions</h3>
                 <button class="quick-action-btn primary">📝 Answer Question</button>
                 <button class="quick-action-btn secondary">📅 Schedule Appointment</button>
-                <button class="quick-action-btn tertiary">✏️ Update Profile</button>
+                <button class="quick-action-btn tertiary" onclick="window.location.href='doctor-profile.html'">✏️ Update Profile</button>
             </div>
 
             <!-- Recent Activity -->
