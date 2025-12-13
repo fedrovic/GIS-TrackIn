@@ -66,63 +66,64 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Mobile menu item clicks
     const mobileMenuItems = document.querySelectorAll('.mobile-menu-item');
-    console.log(`📱 Found ${mobileMenuItems.length} mobile menu items`);
-    
-    mobileMenuItems.forEach((item, index) => {
+    mobileMenuItems.forEach(item => {
         item.addEventListener('click', function(e) {
             const href = this.getAttribute('href');
-            const dataPage = this.getAttribute('data-page');
             const text = this.textContent.trim();
             
-            console.log(`🔔 Menu item ${index + 1} clicked:`, text, '| href:', href, '| data-page:', dataPage);
+            console.log('🔔 Menu item clicked:', text, '| href:', href);
             
-            // If it has data-page attribute, prevent default and show alert
-            if (dataPage) {
-                e.preventDefault();
-                
-                switch(dataPage) {
-                    case 'questions-feed':
-                        alert('📋 Questions Feed\n\nThis page is being worked on by your teammate.\n\nIt will show:\n• All pending patient questions\n• Filter by urgency and specialty\n• Search and sort options\n• Quick answer interface');
-                        break;
-                    case 'my-patients':
-                        alert('👥 My Patients\n\nThis page is being worked on by your teammate.\n\nIt will show:\n• All patients you\'ve consulted\n• Medical history and records\n• Upcoming appointments\n• Past consultations\n• Patient notes');
-                        break;
-                    case 'appointments':
-                        alert('📅 Appointments\n\nThis page is being worked on by your teammate.\n\nIt will show:\n• Full appointment calendar\n• Daily/Weekly/Monthly view\n• Appointment requests\n• Reschedule options\n• Availability management');
-                        break;
-                    case 'medical-library':
-                        alert('📚 Medical Library\n\nThis page is being worked on by your teammate.\n\nIt will contain:\n• Medical research papers\n• Reference materials\n• Treatment guidelines\n• Drug information\n• Clinical protocols');
-                        break;
-                    case 'analytics':
-                        alert('📊 Analytics\n\nThis page is being worked on by your teammate.\n\nIt will show:\n• Performance metrics\n• Response time trends\n• Patient satisfaction scores\n• Revenue analytics\n• Growth statistics');
-                        break;
-                    case 'settings':
-                        alert('⚙️ Settings\n\nThis page is being worked on by your teammate.\n\nYou can configure:\n• Notification preferences\n• Privacy settings\n• Availability schedule\n• Consultation fees\n• Account security\n• Email preferences');
-                        break;
-                    case 'logout':
-                        if (confirm('🚪 Logout\n\nAre you sure you want to logout?')) {
-                            alert('✅ Logout successful!\n\nRedirecting to login page...\n\n(Login page is being worked on by your teammate)');
-                            console.log('User logged out');
-                        }
-                        break;
-                    default:
-                        alert(`📱 ${text}\n\nThis feature is being worked on by your teammate.`);
-                }
-                
-                closeMobileMenu();
-                return;
-            }
-            
-            // If it has a real HTML link, allow navigation and close menu
-            if (href && href !== '#' && href.endsWith('.html')) {
+            // If it has a real link to another page, allow navigation and close menu
+            if (href && href !== '#' && (href.endsWith('.html') || href.startsWith('http'))) {
                 console.log('📄 Navigating to:', href);
                 closeMobileMenu();
-                return; // Allow default navigation
+                return; // Allow default behavior
             }
             
-            // If it's just #, prevent default
-            if (href === '#') {
-                e.preventDefault();
+            // Otherwise, show alert for pages being worked on by others
+            e.preventDefault();
+            
+            if (text.includes('Dashboard')) {
+                // Dashboard link should work - close menu and navigate
+                closeMobileMenu();
+                window.location.href = 'doctor-dashboard.html';
+            } else if (text.includes('Questions Feed')) {
+                alert('📋 Questions Feed\n\nThis page is being worked on by your teammate.\n\nIt will show:\n• All pending patient questions\n• Filter by urgency and specialty\n• Search and sort options\n• Quick answer interface');
+                closeMobileMenu();
+            } else if (text.includes('My Patients')) {
+                alert('👥 My Patients\n\nThis page is being worked on by your teammate.\n\nIt will show:\n• All patients you\'ve consulted\n• Medical history and records\n• Upcoming appointments\n• Past consultations\n• Patient notes');
+                closeMobileMenu();
+            } else if (text.includes('Appointments')) {
+                alert('📅 Appointments\n\nThis page is being worked on by your teammate.\n\nIt will show:\n• Full appointment calendar\n• Daily/Weekly/Monthly view\n• Appointment requests\n• Reschedule options\n• Availability management');
+                closeMobileMenu();
+            } else if (text.includes('Medical Library')) {
+                alert('📚 Medical Library\n\nThis page is being worked on by your teammate.\n\nIt will contain:\n• Medical research papers\n• Reference materials\n• Treatment guidelines\n• Drug information\n• Clinical protocols');
+                closeMobileMenu();
+            } else if (text.includes('Analytics')) {
+                alert('📊 Analytics\n\nThis page is being worked on by your teammate.\n\nIt will show:\n• Performance metrics\n• Response time trends\n• Patient satisfaction scores\n• Revenue analytics\n• Growth statistics');
+                closeMobileMenu();
+            } else if (text.includes('Settings')) {
+                alert('⚙️ Settings\n\nThis page is being worked on by your teammate.\n\nYou can configure:\n• Notification preferences\n• Privacy settings\n• Availability schedule\n• Consultation fees\n• Account security\n• Email preferences');
+                closeMobileMenu();
+            } else if (text.includes('My Profile')) {
+                // My Profile should navigate to profile page
+                closeMobileMenu();
+                window.location.href = 'doctor-profile.html';
+            } else if (text.includes('Logout')) {
+                if (confirm('🚪 Logout\n\nAre you sure you want to logout?')) {
+                    alert('✅ Logout successful!\n\nRedirecting to login page...\n\n(Login page is being worked on by your teammate)');
+                    console.log('User logged out');
+                    closeMobileMenu();
+                    // In production: window.location.href = 'login.html';
+                }
+            } else if (text.includes('Emergency Contacts')) {
+                alert('🚨 Emergency Contacts\n\nThis page is being worked on by your teammate.\n\nIt will show:\n• Emergency hotlines\n• Hospital contacts\n• Ambulance services\n• Poison control\n• Mental health crisis lines');
+                closeMobileMenu();
+            } else if (text.includes('Admin Panel')) {
+                alert('🔧 Admin Panel\n\nThis page is being worked on by your teammate.\n\nAdmin features:\n• User management\n• Content moderation\n• System settings\n• Reports and logs\n• Doctor verification\n\n(Requires admin access)');
+                closeMobileMenu();
+            } else {
+                // Fallback for any other menu items
                 alert(`📱 ${text}\n\nThis feature is being worked on by your teammate.`);
                 closeMobileMenu();
             }
@@ -378,17 +379,4 @@ document.addEventListener('DOMContentLoaded', function() {
             
             if (this.classList.contains('primary')) {
                 // Join Call button
-                alert(`📞 Joining Video Call\n\n${appointmentTitle}\n${appointmentDetails}\n\n✅ Connecting to video consultation...\n\nThe video call feature is being worked on by your teammate.\n\nYou will be able to:\n• Video/audio consultation\n• Screen sharing\n• Chat during call\n• Record session (with consent)\n• Prescribe medication`);
-            } else {
-                // View Details button
-                alert(`📋 Appointment Details\n\n${appointmentTitle}\n${appointmentDetails}\n\nThe appointment details page is being worked on by your teammate.\n\nYou will see:\n• Patient information\n• Medical history\n• Reason for visit\n• Previous consultations\n• Test results\n• Options to reschedule/cancel`);
-            }
-        });
-    });
-    
-    // Appointment items click
-    const appointmentItems = document.querySelectorAll('.appointment-item');
-    appointmentItems.forEach(item => {
-        item.style.cursor = 'pointer';
-        item.addEventListener('click', function(e) {
-            if (e.target.closest('.btn-appoint
+                alert(`📞 Joining Video Call\n\n${appointmentTitle}\n${appointmentDetails}\n\n✅ Connecting to video consultation...\n\nThe video call feature is being worked on by your teammate.\n\nYou will be able to:\n• Video/audio consultation\n• Screen sharing\n• Chat during call\n• Record session (with consent)\n• Prescribe medication`
