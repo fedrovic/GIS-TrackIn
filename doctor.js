@@ -3,35 +3,75 @@
 document.addEventListener('DOMContentLoaded', function() {
     
     // ===========================
+    // MOBILE MENU FUNCTIONALITY
+    // ===========================
+    
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
+    const mobileMenuClose = document.getElementById('mobileMenuClose');
+    
+    // Open mobile menu
+    if (mobileMenuBtn) {
+        mobileMenuBtn.addEventListener('click', function() {
+            mobileMenu.classList.add('active');
+            mobileMenuOverlay.classList.add('active');
+            document.body.style.overflow = 'hidden'; // Prevent background scrolling
+        });
+    }
+    
+    // Close mobile menu
+    function closeMobileMenu() {
+        mobileMenu.classList.remove('active');
+        mobileMenuOverlay.classList.remove('active');
+        document.body.style.overflow = ''; // Restore scrolling
+    }
+    
+    if (mobileMenuClose) {
+        mobileMenuClose.addEventListener('click', closeMobileMenu);
+    }
+    
+    if (mobileMenuOverlay) {
+        mobileMenuOverlay.addEventListener('click', closeMobileMenu);
+    }
+    
+    // Close menu on escape key
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && mobileMenu.classList.contains('active')) {
+            closeMobileMenu();
+        }
+    });
+    
+    // Mobile menu item clicks
+    const mobileMenuItems = document.querySelectorAll('.mobile-menu-item');
+    mobileMenuItems.forEach(item => {
+        item.addEventListener('click', function(e) {
+            // If it's a link with href, allow navigation
+            if (this.getAttribute('href') && this.getAttribute('href') !== '#') {
+                closeMobileMenu();
+            } else {
+                e.preventDefault();
+                console.log('Menu item clicked:', this.textContent.trim());
+            }
+        });
+    });
+    
+    // ===========================
     // SHARED FUNCTIONALITY
     // ===========================
     
-    // Navigation items functionality
+    // Navigation items functionality (Desktop sidebar)
     const navItems = document.querySelectorAll('.nav-item');
     navItems.forEach(item => {
-        item.addEventListener('click', function() {
-            navItems.forEach(nav => nav.classList.remove('active'));
-            this.classList.add('active');
-            
-            const itemText = this.textContent.trim();
-            console.log('Navigating to:', itemText);
-            
-            // Handle navigation
-            switch(itemText) {
-                case 'Home':
-                    window.location.href = 'index.html';
-                    break;
-                case 'Dashboard':
-                    window.location.href = 'doctor-dashboard.html';
-                    break;
-                case 'Medical Centres':
-                    window.location.href = 'medical-centers.html';
-                    break;
-                case 'My Dashboard':
-                    window.location.href = 'patient-dashboard.html';
-                    break;
-                default:
-                    console.log('Navigate to:', itemText);
+        item.addEventListener('click', function(e) {
+            // If it's not a link with href, handle it
+            if (!this.getAttribute('href') || this.getAttribute('href') === '#') {
+                e.preventDefault();
+                navItems.forEach(nav => nav.classList.remove('active'));
+                this.classList.add('active');
+                
+                const itemText = this.textContent.trim();
+                console.log('Navigating to:', itemText);
             }
         });
     });
@@ -73,8 +113,8 @@ document.addEventListener('DOMContentLoaded', function() {
     if (askQuestionBtn) {
         askQuestionBtn.addEventListener('click', function() {
             console.log('Opening question form');
-            // window.location.href = 'question-form.html';
             alert('Opening Question Form...');
+            // window.location.href = 'question-form.html';
         });
     }
     
@@ -173,8 +213,8 @@ document.addEventListener('DOMContentLoaded', function() {
             } else if (btnText.includes('Schedule Appointment')) {
                 alert('Opening appointment scheduler...');
             } else if (btnText.includes('Update Profile')) {
-                alert('Opening profile settings...');
-                // window.location.href = 'doctor-profile-edit.html';
+                // Navigate to profile
+                window.location.href = 'doctor-profile.html';
             }
         });
     });
@@ -196,9 +236,6 @@ document.addEventListener('DOMContentLoaded', function() {
             console.log('Viewing stats for:', label);
             alert(`Viewing detailed analytics for:\n${label}`);
         });
-        
-        // Add hover effect cursor
-        card.style.cursor = 'pointer';
     });
     
     // ===========================
@@ -209,10 +246,9 @@ document.addEventListener('DOMContentLoaded', function() {
     const backLink = document.querySelector('.back-link');
     if (backLink) {
         backLink.addEventListener('click', function(e) {
-            e.preventDefault();
-            console.log('Going back to feed');
-            window.history.back();
-            // Or: window.location.href = 'index.html';
+            // If using javascript:history.back(), it will work automatically
+            // No need to prevent default
+            console.log('Going back to previous page');
         });
     }
     
@@ -228,7 +264,9 @@ document.addEventListener('DOMContentLoaded', function() {
             
             // Add active class to clicked tab
             this.classList.add('active');
-            tabContents[index].classList.add('active');
+            if (tabContents[index]) {
+                tabContents[index].classList.add('active');
+            }
         });
     });
     
@@ -245,6 +283,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 this.textContent = 'Follow';
                 this.style.backgroundColor = 'white';
                 this.style.color = '#4a90e2';
+                this.style.borderColor = '#4a90e2';
                 alert('You unfollowed Dr. Sarah Nabirye');
             }
         });
@@ -275,7 +314,6 @@ document.addEventListener('DOMContentLoaded', function() {
     answerItems.forEach(item => {
         const heading = item.querySelector('h4');
         if (heading) {
-            heading.style.cursor = 'pointer';
             heading.addEventListener('click', function() {
                 console.log('Viewing full answer');
                 alert('Opening full answer and discussion...');
@@ -283,11 +321,10 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
     
-    // Like interaction in answer meta (if needed later)
+    // Like interaction in answer meta
     const answerMetas = document.querySelectorAll('.answer-meta span');
     answerMetas.forEach(meta => {
         if (meta.textContent.includes('likes')) {
-            meta.style.cursor = 'pointer';
             meta.addEventListener('click', function() {
                 console.log('Like clicked');
                 const currentLikes = parseInt(this.textContent.match(/\d+/)[0]);
@@ -322,3 +359,17 @@ function getTimeAgo(date) {
     if (hours < 24) return `${hours} hours ago`;
     return `${days} days ago`;
 }
+
+// Handle window resize to close mobile menu if open
+window.addEventListener('resize', function() {
+    if (window.innerWidth > 992) {
+        const mobileMenu = document.getElementById('mobileMenu');
+        const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
+        
+        if (mobileMenu && mobileMenu.classList.contains('active')) {
+            mobileMenu.classList.remove('active');
+            mobileMenuOverlay.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+    }
+});
