@@ -381,6 +381,29 @@ window.addEventListener('resize', function() {
             mobileMenu.classList.remove('active');
             mobileMenuOverlay.classList.remove('active');
             document.body.style.overflow = '';
+            console.log('📱 Mobile menu closed due to window resize');
+        }
+    }
+});
+
+// Prevent default on all # links to avoid page jumps
+document.addEventListener('click', function(e) {
+    if (e.target.tagName === 'A' && e.target.getAttribute('href') === '#') {
+        e.preventDefault();
+    }
+});
+
+// Console welcome message with styling
+console.log('%c🏥 Agocare Doctor Pages', 'font-size: 20px; font-weight: bold; color: #4a90e2;');
+console.log('%c✅ All functionality loaded successfully', 'color: #28a745;');
+console.log('%cℹ️ Pages marked as "being worked on by teammate" will show alerts', 'color: #666;'); 992) {
+        const mobileMenu = document.getElementById('mobileMenu');
+        const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
+        
+        if (mobileMenu && mobileMenu.classList.contains('active')) {
+            mobileMenu.classList.remove('active');
+            mobileMenuOverlay.classList.remove('active');
+            document.body.style.overflow = '';
         }
     }
 });
