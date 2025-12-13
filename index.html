@@ -1,93 +1,241 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>GIS Tracking</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <!-- Mapbox CSS -->
-  <link href="https://api.mapbox.com/mapbox-gl-js/v2.16.1/mapbox-gl.css" rel="stylesheet">
-  <style>
-    body { margin: 0; font-family: Arial, sans-serif; }
-    #map { width: 100%; height: 500px; }
-    .btn {
-      padding: 10px 15px;
-      background: #4285F4;
-      color: white;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      margin: 10px;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agocare - Home</title>
+    <link rel="stylesheet" href="home.css">
 </head>
 <body>
+    <!-- Header -->
+    <header>
+        <div class="header-left">
+            <div class="logo">Ago<span>care</span></div>
+            <div class="header-icons">
+                <button class="icon-btn">📍</button>
+                <button class="icon-btn">🔔</button>
+                <button class="icon-btn">👤</button>
+            </div>
+            <div class="search-bar">
+                <span>🔍</span>
+                <input type="text" placeholder="Search Agocare...">
+            </div>
+        </div>
+        <div class="header-right">
+            <div class="user-info">
+                <div class="user-avatar">JD</div>
+                <span>Jane Doe</span>
+            </div>
+            <button class="ask-question-btn" onclick="openQuestionForm()">Ask Question</button>
+        </div>
+    </header>
 
-  <h2>GIS Tracking System</h2>
-  <button id="loginBtn" class="btn">Sign in with Google</button>
-  <button id="logoutBtn" class="btn" style="display:none;">Logout</button>
+    <!-- Main Container -->
+    <div class="container">
+        <!-- Left Sidebar -->
+        <aside class="left-sidebar">
+            <nav class="nav-section">
+                <div class="nav-item active">
+                    <span class="nav-icon">🏠</span>
+                    <span>Home</span>
+                </div>
+                <div class="nav-item">
+                    <span class="nav-icon">🏥</span>
+                    <span>Medical Centres</span>
+                </div>
+                <div class="nav-item">
+                    <span class="nav-icon">👤</span>
+                    <span>My Dashboard</span>
+                </div>
+            </nav>
 
-  <div id="map"></div>
+            <div class="nav-section">
+                <div class="category-header">TOPICS</div>
+                <div class="nav-item">
+                    <span class="nav-icon">👶</span>
+                    <span>Pediatrics</span>
+                </div>
+                <div class="nav-item">
+                    <span class="nav-icon">🤰</span>
+                    <span>Pregnancy</span>
+                </div>
+                <div class="nav-item">
+                    <span class="nav-icon">🦠</span>
+                    <span>Infectious Diseases</span>
+                </div>
+                <div class="nav-item">
+                    <span class="nav-icon">❤️</span>
+                    <span>Sexual Health</span>
+                </div>
+                <div class="nav-item">
+                    <span class="nav-icon">🧠</span>
+                    <span>Mental Health</span>
+                </div>
+                <div class="see-all">See all topics</div>
+            </div>
 
-  <!-- Mapbox JS -->
-  <script src="https://api.mapbox.com/mapbox-gl-js/v2.16.1/mapbox-gl.js"></script>
+            <div class="nav-section">
+                <div class="category-header">RESOURCES</div>
+                <div class="nav-item">
+                    <span class="nav-icon">🚨</span>
+                    <span>Emergency Contacts</span>
+                </div>
+                <div class="nav-item">
+                    <span class="nav-icon">🔧</span>
+                    <span>Admin Panel</span>
+                </div>
+            </div>
+        </aside>
 
-  <!-- Firebase SDK -->
-  <script src="https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js"></script>
+        <!-- Main Feed -->
+        <main class="main-feed">
+            <!-- Post Input Box -->
+            <div class="post-input-card">
+                <div class="post-input-header">
+                    <div class="post-avatar">👤</div>
+                    <input type="text" placeholder="What is your health question today?" readonly onclick="openPostForm()">
+                </div>
+                <div class="post-input-actions">
+                    <button class="input-action-btn">✏️ Ask</button>
+                    <button class="input-action-btn">📝 Post</button>
+                </div>
+            </div>
 
-  <script>
-    // ✅ Your Mapbox Token
-    mapboxgl.accessToken = 'pk.eyJ1IjoiZmVkcmktMjU2IiwiYSI6ImNtZnkxN3psZzA2azQya3MzYWo2NjEwdG4ifQ.-tyKAt2LloHxdUYDYfiZMw';
+            <!-- Post Card 1 -->
+            <article class="post-card">
+                <div class="post-header">
+                    <div class="post-avatar">👤</div>
+                    <div class="post-author-info">
+                        <div class="post-question">What is your health question today?</div>
+                        <div class="post-meta">
+                            <span>✏️ Ask</span>
+                            <span>📝 Post</span>
+                        </div>
+                    </div>
+                </div>
 
-    // ✅ Initialize Firebase
-    const firebaseConfig = {
-      apiKey: "AIzaSyCygRKrnhEecPrhRMJZUm1sVKVrZYUbWLY",
-      authDomain: "fredportfolio-7a53c.firebaseapp.com",
-      projectId: "fredportfolio-7a53c",
-      storageBucket: "fredportfolio-7a53c.firebasestorage.app",
-      messagingSenderId: "586695046110",
-      appId: "1:586695046110:web:b16ad1db078b359c3fe34f"
-    };
+                <div class="post-content">
+                    <div class="post-category">Pediatrics · Posted by Jane N. · 2 hours ago</div>
+                    <h3>My 3-year-old child developed a heat rash that won't go away.</h3>
+                    <p>We live in Bushenyi and it has been very hot lately. The rash is mostly on the neck and back. We tried cool baths but it persists. Is this dangerous?</p>
+                    
+                    <div class="post-image">
+                        <img src="https://via.placeholder.com/600x300/e0e0e0/999?text=Image" alt="Post image">
+                    </div>
 
-    const app = firebase.initializeApp(firebaseConfig);
-    const auth = firebase.auth();
-    const provider = new firebase.auth.GoogleAuthProvider();
+                    <div class="post-author-footer">
+                        <div class="post-avatar">👨‍⚕️</div>
+                        <div>
+                            <strong>Dr. Sarah Nabirye</strong> <span class="verified-badge">✓</span>
+                            <div class="author-specialty">Pediatrician · 140 answers</div>
+                        </div>
+                    </div>
 
-    // ✅ Google Login
-    document.getElementById('loginBtn').addEventListener('click', () => {
-      auth.signInWithPopup(provider)
-        .then((result) => {
-          alert("Signed in as: " + result.user.displayName);
-          document.getElementById('loginBtn').style.display = "none";
-          document.getElementById('logoutBtn').style.display = "inline-block";
-        })
-        .catch((error) => {
-          alert("Error: " + error.message);
-        });
-    });
+                    <p>Heat rash (prickly) is common in hot weather. Keep the area cool and dry. Good washing helps prevent the rash to spread, even if it's covered or covered by light clothes. If it intensifies or is covered with flu-like symptoms call your doctor.</p>
 
-    // ✅ Logout
-    document.getElementById('logoutBtn').addEventListener('click', () => {
-      auth.signOut().then(() => {
-        alert("Logged out!");
-        document.getElementById('loginBtn').style.display = "inline-block";
-        document.getElementById('logoutBtn').style.display = "none";
-      });
-    });
+                    <div class="post-actions">
+                        <button class="action-btn">💬 Discuss (45)</button>
+                        <button class="action-btn">👍 27</button>
+                        <button class="action-btn">🔖</button>
+                        <button class="report-btn">Report</button>
+                    </div>
+                </div>
+            </article>
 
-    // ✅ Load Mapbox Map
-    const map = new mapboxgl.Map({
-      container: 'map',
-      style: 'mapbox://styles/mapbox/streets-v12',
-      center: [30.5, 0.3], // Uganda area
-      zoom: 5
-    });
+            <!-- Post Card 2 -->
+            <article class="post-card">
+                <div class="post-image">
+                    <img src="https://via.placeholder.com/600x300/e0e0e0/999?text=Mountain+Image" alt="Post image">
+                </div>
 
-    // Add blue marker for user location (example)
-    const userMarker = new mapboxgl.Marker({ color: "blue" })
-      .setLngLat([30.5, 0.3])
-      .addTo(map);
-  </script>
+                <div class="post-author-footer">
+                    <div class="post-avatar">👨‍⚕️</div>
+                    <div>
+                        <strong>Dr. Sarah Nabirye</strong> <span class="verified-badge">✓</span>
+                    </div>
+                </div>
+
+                <div class="post-content">
+                    <p>Heat rash (prickly) is common in hot weather. Keep the area cool and dry. Good washing helps prevent the rash from spreading. If it intensifies or is covered with flu-like symptoms call your doctor.</p>
+
+                    <div class="post-actions">
+                        <button class="action-btn">💬 Discuss (45)</button>
+                        <button class="action-btn">👍 27</button>
+                        <button class="action-btn">🔖</button>
+                        <button class="report-btn">Report</button>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Post Card 3 -->
+            <article class="post-card">
+                <div class="post-content">
+                    <div class="post-category">Infectious Diseases · Posted by Anonymous · 5 hours ago</div>
+                    <h3>Persistent headache and fever in the evenings.</h3>
+                    <p>I have been having high fevers only at night for the past 4 days, accompanied by joint pain. Could this be malaria even if I sleep under a net?</p>
+
+                    <div class="post-author-footer">
+                        <div class="post-avatar">👨‍⚕️</div>
+                        <div>
+                            <strong>Dr. John Kamara</strong> <span class="verified-badge">✓</span>
+                            <div class="author-specialty">Internal Medicine · 289 answers</div>
+                        </div>
+                    </div>
+
+                    <p>Yes, it is possible. Mosquito nets are not 100% foolproof if there are holes or inconsistent use. Do not self-treat and get a malaria test at the nearest facility. Monitor your symptoms and stay hydrated during the night.</p>
+
+                    <div class="post-actions">
+                        <button class="action-btn">💬 Discuss (45)</button>
+                        <button class="action-btn">👍 27</button>
+                        <button class="action-btn">🔖</button>
+                        <button class="report-btn">Report</button>
+                    </div>
+                </div>
+            </article>
+        </main>
+
+        <!-- Right Sidebar -->
+        <aside class="right-sidebar">
+            <div class="urgent-help-card">
+                <h3>Need Urgent Help?</h3>
+                <p>Connect with verified specialists instantly via chat or video.</p>
+                <button class="talk-to-doctor-btn">🩺 Talk to Doctor</button>
+            </div>
+
+            <div class="trending-card">
+                <h3>Trending in Uganda</h3>
+                
+                <div class="trending-item">
+                    <div class="trending-title">Fake Drugs</div>
+                    <div class="trending-subtitle">Malaria Prevention in Rainy Season</div>
+                </div>
+
+                <div class="trending-item">
+                    <div class="trending-title">Red Eye (Conjunctivitis) Alert</div>
+                    <div class="trending-subtitle">Jinja Hospital</div>
+                </div>
+
+                <div class="trending-item">
+                    <div class="trending-title">Free Antenatal Care Camps</div>
+                </div>
+
+                <div class="trending-divider"></div>
+
+                <div class="top-contributor">
+                    <h4>Top Contributor</h4>
+                    <div class="contributor-profile">
+                        <div class="contributor-avatar">👨‍⚕️</div>
+                        <div>
+                            <strong>Dr. Sarah Nabirye</strong>
+                            <div class="contributor-stats">Pediatrician · 140 Answers</div>
+                        </div>
+                    </div>
+                    <button class="follow-btn">Follow</button>
+                </div>
+            </div>
+        </aside>
+    </div>
+
+    <script src="home.js"></script>
 </body>
-  </html>
+</html>
