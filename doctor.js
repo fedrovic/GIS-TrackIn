@@ -11,13 +11,24 @@ document.addEventListener('DOMContentLoaded', function() {
     const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
     const mobileMenuClose = document.getElementById('mobileMenuClose');
     
+    console.log('Mobile Menu Elements:', {
+        btn: mobileMenuBtn,
+        menu: mobileMenu,
+        overlay: mobileMenuOverlay,
+        close: mobileMenuClose
+    });
+    
     // Open mobile menu
     if (mobileMenuBtn) {
-        mobileMenuBtn.addEventListener('click', function() {
+        mobileMenuBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            console.log('Mobile menu button clicked!');
             mobileMenu.classList.add('active');
             mobileMenuOverlay.classList.add('active');
             document.body.style.overflow = 'hidden'; // Prevent background scrolling
         });
+    } else {
+        console.error('Mobile menu button not found!');
     }
     
     // Close mobile menu
