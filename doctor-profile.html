@@ -7,22 +7,112 @@
     <link rel="stylesheet" href="doctor.css">
 </head>
 <body>
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-menu-overlay" id="mobileMenuOverlay"></div>
+    
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="mobile-menu-header">
+            <h2>Menu</h2>
+            <button class="mobile-menu-close" id="mobileMenuClose">×</button>
+        </div>
+        
+        <div class="mobile-menu-content">
+            <div class="mobile-menu-section">
+                <div class="mobile-menu-label">MAIN</div>
+                <a href="index.html" class="mobile-menu-item">
+                    <span class="nav-icon">🏠</span>
+                    <span>Home</span>
+                </a>
+                <a href="medical-centers.html" class="mobile-menu-item">
+                    <span class="nav-icon">🏥</span>
+                    <span>Medical Centres</span>
+                </a>
+                <a href="patient-dashboard.html" class="mobile-menu-item">
+                    <span class="nav-icon">👤</span>
+                    <span>My Dashboard</span>
+                </a>
+            </div>
+            
+            <div class="mobile-menu-section">
+                <div class="mobile-menu-label">TOPICS</div>
+                <a href="#" class="mobile-menu-item">
+                    <span class="nav-icon">👶</span>
+                    <span>Pediatrics</span>
+                </a>
+                <a href="#" class="mobile-menu-item">
+                    <span class="nav-icon">🤰</span>
+                    <span>Pregnancy</span>
+                </a>
+                <a href="#" class="mobile-menu-item">
+                    <span class="nav-icon">🦠</span>
+                    <span>Infectious Diseases</span>
+                </a>
+                <a href="#" class="mobile-menu-item">
+                    <span class="nav-icon">❤️</span>
+                    <span>Sexual Health</span>
+                </a>
+                <a href="#" class="mobile-menu-item">
+                    <span class="nav-icon">🧠</span>
+                    <span>Mental Health</span>
+                </a>
+                <div class="see-all">See all topics</div>
+            </div>
+            
+            <div class="mobile-menu-section">
+                <div class="mobile-menu-label">RESOURCES</div>
+                <a href="#" class="mobile-menu-item">
+                    <span class="nav-icon">🚨</span>
+                    <span>Emergency Contacts</span>
+                </a>
+                <a href="#" class="mobile-menu-item">
+                    <span class="nav-icon">🔧</span>
+                    <span>Admin Panel</span>
+                </a>
+            </div>
+            
+            <div class="mobile-menu-section">
+                <div class="mobile-menu-label">ACCOUNT</div>
+                <div class="mobile-menu-profile">
+                    <div class="user-avatar">JD</div>
+                    <div>
+                        <div class="mobile-profile-name">Jane Doe</div>
+                        <div class="mobile-profile-specialty">Patient</div>
+                    </div>
+                </div>
+                <a href="#" class="mobile-menu-item">
+                    <span class="nav-icon">👤</span>
+                    <span>My Profile</span>
+                </a>
+                <a href="#" class="mobile-menu-item">
+                    <span class="nav-icon">🚪</span>
+                    <span>Logout</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
     <!-- Header -->
     <header>
         <div class="header-left">
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
             <div class="logo">Ago<span>care</span></div>
-            <div class="header-icons">
+            <div class="header-icons desktop-only">
                 <button class="icon-btn">📍</button>
                 <button class="icon-btn">🔔</button>
                 <button class="icon-btn">👤</button>
             </div>
-            <div class="search-bar">
+            <div class="search-bar desktop-only">
                 <span>🔍</span>
                 <input type="text" placeholder="Search Agocare...">
             </div>
         </div>
         <div class="header-right">
-            <div class="user-info">
+            <div class="user-info desktop-only">
                 <div class="user-avatar">JD</div>
                 <span>Jane Doe</span>
             </div>
@@ -32,65 +122,65 @@
 
     <!-- Main Container -->
     <div class="container">
-        <!-- Left Sidebar -->
-        <aside class="left-sidebar">
+        <!-- Left Sidebar (Desktop Only) -->
+        <aside class="left-sidebar desktop-only">
             <nav class="nav-section">
-                <div class="nav-item">
+                <a href="index.html" class="nav-item">
                     <span class="nav-icon">🏠</span>
                     <span>Home</span>
-                </div>
-                <div class="nav-item">
+                </a>
+                <a href="medical-centers.html" class="nav-item">
                     <span class="nav-icon">🏥</span>
                     <span>Medical Centres</span>
-                </div>
-                <div class="nav-item">
+                </a>
+                <a href="patient-dashboard.html" class="nav-item">
                     <span class="nav-icon">👤</span>
                     <span>My Dashboard</span>
-                </div>
+                </a>
             </nav>
 
             <div class="nav-section">
                 <div class="category-header">TOPICS</div>
-                <div class="nav-item">
+                <a href="#" class="nav-item">
                     <span class="nav-icon">👶</span>
                     <span>Pediatrics</span>
-                </div>
-                <div class="nav-item">
+                </a>
+                <a href="#" class="nav-item">
                     <span class="nav-icon">🤰</span>
                     <span>Pregnancy</span>
-                </div>
-                <div class="nav-item">
+                </a>
+                <a href="#" class="nav-item">
                     <span class="nav-icon">🦠</span>
                     <span>Infectious Diseases</span>
-                </div>
-                <div class="nav-item">
+                </a>
+                <a href="#" class="nav-item">
                     <span class="nav-icon">❤️</span>
                     <span>Sexual Health</span>
-                </div>
-                <div class="nav-item">
+                </a>
+                <a href="#" class="nav-item">
                     <span class="nav-icon">🧠</span>
                     <span>Mental Health</span>
-                </div>
+                </a>
                 <div class="see-all">See all topics</div>
             </div>
 
             <div class="nav-section">
                 <div class="category-header">RESOURCES</div>
-                <div class="nav-item">
+                <a href="#" class="nav-item">
                     <span class="nav-icon">🚨</span>
                     <span>Emergency Contacts</span>
-                </div>
-                <div class="nav-item">
+                </a>
+                <a href="#" class="nav-item">
                     <span class="nav-icon">🔧</span>
                     <span>Admin Panel</span>
-                </div>
+                </a>
             </div>
         </aside>
 
         <!-- Main Content -->
         <main class="main-content profile-content">
             <!-- Back Button -->
-            <a href="#" class="back-link">← Back to Feed</a>
+            <a href="javascript:history.back()" class="back-link">← Back to Feed</a>
 
             <!-- Profile Header -->
             <div class="profile-header">
@@ -188,8 +278,8 @@
             </div>
         </main>
 
-        <!-- Right Sidebar -->
-        <aside class="right-sidebar">
+        <!-- Right Sidebar (Desktop Only) -->
+        <aside class="right-sidebar desktop-only">
             <div class="urgent-help-card">
                 <h3>Need Urgent Help?</h3>
                 <p>Connect with verified specialists instantly via chat or video.</p>
