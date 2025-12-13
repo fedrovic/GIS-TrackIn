@@ -16,6 +16,149 @@ body {
     line-height: 1.6;
 }
 
+/* Mobile Menu Button */
+.mobile-menu-btn {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    flex-direction: column;
+    gap: 4px;
+    margin-right: 12px;
+}
+
+.mobile-menu-btn span {
+    width: 20px;
+    height: 2px;
+    background-color: #333;
+    display: block;
+    transition: all 0.3s;
+}
+
+/* Mobile Menu Overlay */
+.mobile-menu-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 998;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.mobile-menu-overlay.active {
+    display: block;
+    opacity: 1;
+}
+
+/* Mobile Menu */
+.mobile-menu {
+    position: fixed;
+    top: 0;
+    left: -280px;
+    width: 280px;
+    height: 100%;
+    background-color: white;
+    z-index: 999;
+    overflow-y: auto;
+    transition: left 0.3s ease;
+    box-shadow: 2px 0 8px rgba(0, 0, 0, 0.1);
+}
+
+.mobile-menu.active {
+    left: 0;
+}
+
+.mobile-menu-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.mobile-menu-header h2 {
+    font-size: 18px;
+    color: #e63946;
+}
+
+.mobile-menu-close {
+    background: none;
+    border: none;
+    font-size: 32px;
+    color: #999;
+    cursor: pointer;
+    line-height: 1;
+    padding: 0;
+}
+
+.mobile-menu-content {
+    padding: 8px 0;
+}
+
+.mobile-menu-section {
+    margin-bottom: 12px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.mobile-menu-section:last-child {
+    border-bottom: none;
+}
+
+.mobile-menu-label {
+    padding: 12px 20px 8px;
+    font-size: 11px;
+    color: #999;
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+.mobile-menu-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 20px;
+    color: #333;
+    text-decoration: none;
+    font-size: 14px;
+    transition: background-color 0.2s;
+}
+
+.mobile-menu-item:hover {
+    background-color: #f5f5f5;
+}
+
+.mobile-menu-item.active {
+    background-color: #fee;
+    color: #e63946;
+    font-weight: 600;
+}
+
+.mobile-menu-profile {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 20px;
+    margin-bottom: 8px;
+}
+
+.mobile-profile-name {
+    font-size: 14px;
+    font-weight: 600;
+    color: #333;
+}
+
+.mobile-profile-specialty {
+    font-size: 11px;
+    color: #999;
+}
+
 /* Header Styles */
 header {
     background-color: white;
@@ -125,6 +268,7 @@ header {
     font-weight: 600;
     font-size: 14px;
     transition: background-color 0.2s;
+    white-space: nowrap;
 }
 
 .ask-question-btn:hover {
@@ -161,6 +305,8 @@ header {
     cursor: pointer;
     transition: background-color 0.2s;
     font-size: 14px;
+    color: #333;
+    text-decoration: none;
 }
 
 .nav-item:hover {
@@ -414,6 +560,13 @@ header {
     background-color: white;
     border-radius: 8px;
     padding: 20px;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.stat-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .stat-label {
@@ -470,6 +623,7 @@ header {
 
 .question-content {
     flex: 1;
+    min-width: 0;
 }
 
 .question-category {
@@ -506,6 +660,7 @@ header {
     font-size: 13px;
     white-space: nowrap;
     transition: all 0.2s;
+    flex-shrink: 0;
 }
 
 .btn-answer:hover {
@@ -559,6 +714,7 @@ header {
 
 .appointment-content {
     flex: 1;
+    min-width: 0;
 }
 
 .appointment-title {
@@ -581,6 +737,7 @@ header {
     font-size: 12px;
     white-space: nowrap;
     transition: all 0.2s;
+    flex-shrink: 0;
 }
 
 .btn-appointment.primary {
@@ -795,6 +952,7 @@ header {
     gap: 24px;
     font-size: 14px;
     color: #666;
+    flex-wrap: wrap;
 }
 
 .profile-stats strong {
@@ -808,6 +966,7 @@ header {
 .profile-actions {
     display: flex;
     gap: 12px;
+    flex-wrap: wrap;
 }
 
 .btn-follow {
@@ -968,6 +1127,11 @@ header {
     font-size: 15px;
     color: #333;
     margin-bottom: 8px;
+    cursor: pointer;
+}
+
+.answer-item h4:hover {
+    color: #4a90e2;
 }
 
 .answer-item p {
@@ -982,6 +1146,15 @@ header {
     gap: 16px;
     font-size: 12px;
     color: #999;
+    flex-wrap: wrap;
+}
+
+.answer-meta span {
+    cursor: pointer;
+}
+
+.answer-meta span:hover {
+    color: #4a90e2;
 }
 
 /* ===========================
@@ -999,59 +1172,64 @@ header {
 }
 
 @media (max-width: 992px) {
-    .right-sidebar {
-        display: none;
+    .desktop-only {
+        display: none !important;
+    }
+    
+    .mobile-menu-btn {
+        display: flex;
     }
     
     .stats-grid {
         grid-template-columns: repeat(2, 1fr);
     }
+    
+    .container {
+        padding: 12px 16px;
+    }
+    
+    .section-card {
+        padding: 16px;
+    }
 }
 
 @media (max-width: 768px) {
     header {
-        padding: 12px 20px;
+        padding: 12px 16px;
     }
     
-    .search-bar {
-        width: 200px;
+    .logo {
+        font-size: 18px;
     }
     
-    .container {
-        padding: 12px;
+    .ask-question-btn {
+        padding: 8px 16px;
+        font-size: 12px;
     }
     
-    .left-sidebar {
-        display: none;
+    .welcome-banner {
+        padding: 20px;
+    }
+    
+    .welcome-banner h1 {
+        font-size: 18px;
+    }
+    
+    .welcome-banner p {
+        font-size: 11px;
     }
     
     .stats-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
     }
     
-    .question-item,
-    .appointment-item {
-        flex-direction: column;
-        align-items: flex-start;
+    .stat-card {
+        padding: 16px;
     }
     
-    .btn-answer,
-    .btn-appointment {
-        width: 100%;
-        margin-top: 8px;
+    .stat-value {
+        font-size: 24px;
     }
     
-    .profile-stats {
-        flex-direction: column;
-        gap: 8px;
-    }
     
-    .profile-actions {
-        flex-direction: column;
-    }
-    
-    .btn-follow,
-    .btn-ask-question {
-        width: 100%;
-    }
-}
