@@ -4,330 +4,410 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Doctor's Dashboard - Agocare</title>
-    <link rel="stylesheet" href="doctor.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+
+        /* Header */
+        header {
+            background: white;
+            padding: 16px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .menu-btn {
+            background: none;
+            border: none;
+            width: 30px;
+            height: 24px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            cursor: pointer;
+            padding: 0;
+        }
+
+        .menu-btn span {
+            display: block;
+            width: 100%;
+            height: 3px;
+            background: #333;
+            border-radius: 2px;
+        }
+
+        .logo {
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .logo span {
+            color: #4a90e2;
+        }
+
+        .ask-btn {
+            background: #e63946;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        /* Mobile Menu Overlay */
+        .menu-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.5);
+            display: none;
+            z-index: 998;
+        }
+
+        .menu-overlay.show {
+            display: block;
+        }
+
+        /* Mobile Menu */
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            left: -100%;
+            width: 280px;
+            height: 100%;
+            background: white;
+            z-index: 999;
+            transition: left 0.3s;
+            overflow-y: auto;
+        }
+
+        .mobile-menu.show {
+            left: 0;
+        }
+
+        .menu-header {
+            padding: 20px;
+            border-bottom: 1px solid #f0f0f0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .menu-header h2 {
+            color: #e63946;
+            font-size: 18px;
+        }
+
+        .close-btn {
+            background: none;
+            border: none;
+            font-size: 32px;
+            color: #999;
+            cursor: pointer;
+            line-height: 1;
+        }
+
+        .menu-section {
+            padding: 12px 0;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .menu-label {
+            padding: 12px 20px;
+            font-size: 11px;
+            color: #999;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .menu-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 14px 20px;
+            text-decoration: none;
+            color: #333;
+            cursor: pointer;
+        }
+
+        .menu-item:hover {
+            background: #f5f5f5;
+        }
+
+        .menu-item.active {
+            background: #fee;
+            color: #e63946;
+            font-weight: 600;
+        }
+
+        .menu-profile {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 20px;
+        }
+
+        .avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: #4a90e2;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+        }
+
+        /* Main Content */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .welcome {
+            background: linear-gradient(135deg, #4a90e2, #357abd);
+            color: white;
+            padding: 32px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+        }
+
+        .welcome h1 {
+            font-size: 24px;
+            margin-bottom: 8px;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+            margin-bottom: 20px;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+        }
+
+        .stat-label {
+            font-size: 13px;
+            color: #999;
+            margin-bottom: 8px;
+        }
+
+        .stat-value {
+            font-size: 28px;
+            font-weight: bold;
+            margin-bottom: 4px;
+        }
+
+        .stat-change {
+            font-size: 12px;
+            color: #28a745;
+        }
+
+        .section {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 16px;
+        }
+
+        .section h2 {
+            font-size: 18px;
+            margin-bottom: 16px;
+        }
+
+        .question-item {
+            padding: 16px;
+            background: #f9f9f9;
+            border-radius: 8px;
+            margin-bottom: 12px;
+        }
+
+        .question-category {
+            color: #4a90e2;
+            font-weight: 600;
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+
+        .question-text {
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+
+        .question-meta {
+            font-size: 12px;
+            color: #999;
+            margin-bottom: 12px;
+        }
+
+        .btn-answer {
+            background: #28a745;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        @media (min-width: 768px) {
+            .stats {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+    </style>
 </head>
 <body>
     <!-- Mobile Menu Overlay -->
-    <div class="mobile-menu-overlay" id="mobileMenuOverlay"></div>
-    
+    <div class="menu-overlay" id="menuOverlay" onclick="closeMenu()"></div>
+
     <!-- Mobile Menu -->
     <div class="mobile-menu" id="mobileMenu">
-        <div class="mobile-menu-header">
+        <div class="menu-header">
             <h2>Menu</h2>
-            <button class="mobile-menu-close" id="mobileMenuClose">×</button>
+            <button class="close-btn" onclick="closeMenu()">×</button>
         </div>
-        
-        <div class="mobile-menu-content">
-            <div class="mobile-menu-section">
-                <div class="mobile-menu-label">MAIN</div>
-                <a href="doctor-dashboard.html" class="mobile-menu-item active">
-                    <span class="nav-icon">🏠</span>
-                    <span>Dashboard</span>
-                </a>
-                <a href="#" class="mobile-menu-item" data-page="questions-feed">
-                    <span class="nav-icon">❓</span>
-                    <span>Questions Feed</span>
-                </a>
-                <a href="#" class="mobile-menu-item" data-page="my-patients">
-                    <span class="nav-icon">👥</span>
-                    <span>My Patients</span>
-                </a>
-                <a href="#" class="mobile-menu-item" data-page="appointments">
-                    <span class="nav-icon">📅</span>
-                    <span>Appointments</span>
-                </a>
-            </div>
-            
-            <div class="mobile-menu-section">
-                <div class="mobile-menu-label">RESOURCES</div>
-                <a href="#" class="mobile-menu-item" data-page="medical-library">
-                    <span class="nav-icon">📚</span>
-                    <span>Medical Library</span>
-                </a>
-                <a href="#" class="mobile-menu-item" data-page="analytics">
-                    <span class="nav-icon">📊</span>
-                    <span>Analytics</span>
-                </a>
-                <a href="#" class="mobile-menu-item" data-page="settings">
-                    <span class="nav-icon">⚙️</span>
-                    <span>Settings</span>
-                </a>
-            </div>
-            
-            <div class="mobile-menu-section">
-                <div class="mobile-menu-label">ACCOUNT</div>
-                <div class="mobile-menu-profile">
-                    <div class="user-avatar">DN</div>
-                    <div>
-                        <div class="mobile-profile-name">Dr. Nabirye</div>
-                        <div class="mobile-profile-specialty">Pediatrician</div>
-                    </div>
+
+        <div class="menu-section">
+            <div class="menu-label">MAIN</div>
+            <div class="menu-item active">🏠 Dashboard</div>
+            <div class="menu-item" onclick="alert('Questions Feed page is being built by your teammate')">❓ Questions Feed</div>
+            <div class="menu-item" onclick="alert('My Patients page is being built by your teammate')">👥 My Patients</div>
+            <div class="menu-item" onclick="alert('Appointments page is being built by your teammate')">📅 Appointments</div>
+        </div>
+
+        <div class="menu-section">
+            <div class="menu-label">RESOURCES</div>
+            <div class="menu-item" onclick="window.location.href='medical-library.html'">📚 Medical Library</div>
+            <div class="menu-item" onclick="window.location.href='analytics.html'">📊 Analytics</div>
+            <div class="menu-item" onclick="window.location.href='settings.html'">⚙️ Settings</div>
+        </div>
+
+        <div class="menu-section">
+            <div class="menu-label">ACCOUNT</div>
+            <div class="menu-profile">
+                <div class="avatar">DN</div>
+                <div>
+                    <div style="font-weight: 600;">Dr. Nabirye</div>
+                    <div style="font-size: 12px; color: #999;">Pediatrician</div>
                 </div>
-                <a href="doctor-profile.html" class="mobile-menu-item">
-                    <span class="nav-icon">👤</span>
-                    <span>My Profile</span>
-                </a>
-                <a href="#" class="mobile-menu-item" data-page="logout">
-                    <span class="nav-icon">🚪</span>
-                    <span>Logout</span>
-                </a>
             </div>
+            <div class="menu-item" onclick="window.location.href='doctor-profile.html'">👤 My Profile</div>
+            <div class="menu-item" onclick="if(confirm('Logout?')) alert('Redirecting to login...')">🚪 Logout</div>
         </div>
     </div>
 
     <!-- Header -->
     <header>
         <div class="header-left">
-            <button class="mobile-menu-btn" id="mobileMenuBtn">
+            <button class="menu-btn" onclick="openMenu()">
                 <span></span>
                 <span></span>
                 <span></span>
             </button>
             <div class="logo">Ago<span>care</span></div>
-            <div class="header-icons desktop-only">
-                <button class="icon-btn">📍</button>
-                <button class="icon-btn">🔔</button>
-                <button class="icon-btn">👤</button>
-            </div>
-            <div class="search-bar desktop-only">
-                <span>🔍</span>
-                <input type="text" placeholder="Search Agocare...">
-            </div>
         </div>
-        <div class="header-right">
-            <div class="user-info desktop-only">
-                <div class="user-avatar">DN</div>
-                <span>Dr. Nabirye</span>
-            </div>
-            <button class="ask-question-btn">Ask Question</button>
-        </div>
+        <button class="ask-btn">Ask Question</button>
     </header>
 
-    <!-- Main Container -->
+    <!-- Main Content -->
     <div class="container">
-        <!-- Left Sidebar (Desktop Only) -->
-        <aside class="left-sidebar desktop-only">
-            <nav class="nav-section">
-                <div class="category-header">MAIN</div>
-                <a href="doctor-dashboard.html" class="nav-item active">
-                    <span class="nav-icon">🏠</span>
-                    <span>Dashboard</span>
-                </a>
-                <a href="#" class="nav-item">
-                    <span class="nav-icon">❓</span>
-                    <span>Questions Feed</span>
-                </a>
-                <a href="#" class="nav-item">
-                    <span class="nav-icon">👥</span>
-                    <span>My Patients</span>
-                </a>
-                <a href="#" class="nav-item">
-                    <span class="nav-icon">📅</span>
-                    <span>Appointments</span>
-                </a>
-            </nav>
+        <div class="welcome">
+            <h1>Welcome back, Dr. Nabirye!</h1>
+            <p>You have 5 pending questions and 3 appointments today.</p>
+        </div>
 
-            <div class="nav-section">
-                <div class="category-header">RESOURCES</div>
-                <a href="medical-library.html" class="nav-item">
-                    <span class="nav-icon">📚</span>
-                    <span>Medical Library</span>
-                </a>
-                <a href="analytics.html" class="nav-item">
-                    <span class="nav-icon">📊</span>
-                    <span>Analytics</span>
-                </a>
-                <a href="settings.html" class="nav-item">
-                    <span class="nav-icon">⚙️</span>
-                    <span>Settings</span>
-                </a>
+        <div class="stats">
+            <div class="stat-card">
+                <div class="stat-label">Questions Answered</div>
+                <div class="stat-value">450</div>
+                <div class="stat-change">↑ 12% this month</div>
             </div>
-        </aside>
+            <div class="stat-card">
+                <div class="stat-label">Patient Followers</div>
+                <div class="stat-value">1.2K</div>
+                <div class="stat-change">↑ 8% this week</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">Avg Response Time</div>
+                <div class="stat-value">1hr</div>
+                <div class="stat-change">Excellent</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">Rating</div>
+                <div class="stat-value">4.9</div>
+                <div class="stat-change">⭐⭐⭐⭐⭐</div>
+            </div>
+        </div>
 
-        <!-- Main Content -->
-        <main class="main-content">
-            <!-- Welcome Banner -->
-            <div class="welcome-banner">
-                <h1>Welcome back, Dr. Nabirye!</h1>
-                <p>You have 5 pending questions and 3 appointments today.</p>
+        <div class="section">
+            <h2>Pending Questions (5)</h2>
+            
+            <div class="question-item">
+                <div class="question-category">Pediatrics</div>
+                <div class="question-text">My 3-year-old child developed a heat rash that won't go away.</div>
+                <div class="question-meta">Posted by Jane N. • 2 hours ago</div>
+                <button class="btn-answer" onclick="alert('Answer form is being built by your teammate')">Answer Now</button>
             </div>
 
-            <!-- Stats Grid -->
-            <div class="stats-grid">
-                <div class="stat-card">
-                    <div class="stat-label">Questions Answered</div>
-                    <div class="stat-value">450</div>
-                    <div class="stat-change positive">↑ 12% this month</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-label">Patient Followers</div>
-                    <div class="stat-value">1.2K</div>
-                    <div class="stat-change positive">↑ 8% this week</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-label">Avg Response Time</div>
-                    <div class="stat-value">1hr</div>
-                    <div class="stat-change info">Excellent</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-label">Rating</div>
-                    <div class="stat-value">4.9</div>
-                    <div class="stat-change rating">⭐⭐⭐⭐⭐</div>
-                </div>
+            <div class="question-item">
+                <div class="question-category">Infectious Diseases</div>
+                <div class="question-text">Persistent headache and fever in the evenings.</div>
+                <div class="question-meta">Posted by Anonymous • 5 hours ago • URGENT</div>
+                <button class="btn-answer" onclick="alert('Answer form is being built by your teammate')">Answer Now</button>
             </div>
 
-            <!-- Pending Questions Section -->
-            <div class="section-card">
-                <div class="section-header">
-                    <h2>Pending Questions (5)</h2>
-                </div>
-                
-                <div class="question-item">
-                    <div class="question-avatar">👤</div>
-                    <div class="question-content">
-                        <div class="question-category">Pediatrics</div>
-                        <div class="question-text">My 3-year-old child developed a heat rash that won't go away.</div>
-                        <div class="question-meta">Posted by Jane N. • 2 hours ago</div>
-                    </div>
-                    <button class="btn-answer urgent">Answer Now</button>
-                </div>
-
-                <div class="question-item">
-                    <div class="question-avatar">👤</div>
-                    <div class="question-content">
-                        <div class="question-category">Infectious Diseases</div>
-                        <div class="question-text">Persistent headache and fever in the evenings.</div>
-                        <div class="question-meta">Posted by Anonymous • 5 hours ago • <span class="urgent-tag">Urgent</span></div>
-                    </div>
-                    <button class="btn-answer urgent">Answer Now</button>
-                </div>
-
-                <div class="question-item">
-                    <div class="question-avatar">👤</div>
-                    <div class="question-content">
-                        <div class="question-category">General Health</div>
-                        <div class="question-text">What vitamins should I take during pregnancy?</div>
-                        <div class="question-meta">Posted by Mary K. • 8 hours ago</div>
-                    </div>
-                    <button class="btn-answer">Answer Now</button>
-                </div>
-
-                <a href="#" class="view-all-link">View All Questions →</a>
+            <div class="question-item">
+                <div class="question-category">General Health</div>
+                <div class="question-text">What vitamins should I take during pregnancy?</div>
+                <div class="question-meta">Posted by Mary K. • 8 hours ago</div>
+                <button class="btn-answer" onclick="alert('Answer form is being built by your teammate')">Answer Now</button>
             </div>
-
-            <!-- Today's Appointments -->
-            <div class="section-card">
-                <div class="section-header">
-                    <h2>Today's Appointments (3)</h2>
-                </div>
-
-                <div class="appointment-item">
-                    <div class="appointment-indicator blue"></div>
-                    <div class="appointment-content">
-                        <div class="appointment-title">10:00 AM - Jane Mukasa</div>
-                        <div class="appointment-details">Pediatric Checkup • Video Call</div>
-                    </div>
-                    <button class="btn-appointment primary">Join Call</button>
-                </div>
-
-                <div class="appointment-item">
-                    <div class="appointment-indicator green"></div>
-                    <div class="appointment-content">
-                        <div class="appointment-title">2:00 PM - Peter Ouma</div>
-                        <div class="appointment-details">Follow-up Consultation • In-Person</div>
-                    </div>
-                    <button class="btn-appointment secondary">View Details</button>
-                </div>
-
-                <div class="appointment-item">
-                    <div class="appointment-indicator yellow"></div>
-                    <div class="appointment-content">
-                        <div class="appointment-title">4:30 PM - Sarah Nakato</div>
-                        <div class="appointment-details">New Patient • Video Call</div>
-                    </div>
-                    <button class="btn-appointment secondary">View Details</button>
-                </div>
-            </div>
-        </main>
-
-        <!-- Right Sidebar (Desktop Only) -->
-        <aside class="right-sidebar desktop-only">
-            <!-- Quick Actions -->
-            <div class="sidebar-card">
-                <h3>Quick Actions</h3>
-                <button class="quick-action-btn primary">📝 Answer Question</button>
-                <button class="quick-action-btn secondary">📅 Schedule Appointment</button>
-                <button class="quick-action-btn tertiary" onclick="window.location.href='doctor-profile.html'">✏️ Update Profile</button>
-            </div>
-
-            <!-- Recent Activity -->
-            <div class="sidebar-card">
-                <h3>Recent Activity</h3>
-                <div class="activity-list">
-                    <div class="activity-item">
-                        <div class="activity-text">Jane M. followed you</div>
-                        <div class="activity-time">5 minutes ago</div>
-                    </div>
-                    <div class="activity-item">
-                        <div class="activity-text">You answered a question</div>
-                        <div class="activity-time">1 hour ago</div>
-                    </div>
-                    <div class="activity-item">
-                        <div class="activity-text">Peter O. rated you ⭐⭐⭐⭐⭐</div>
-                        <div class="activity-time">3 hours ago</div>
-                    </div>
-                    <div class="activity-item">
-                        <div class="activity-text">New appointment booked</div>
-                        <div class="activity-time">5 hours ago</div>
-                    </div>
-                    <div class="activity-item">
-                        <div class="activity-text">Your answer got 15 likes</div>
-                        <div class="activity-time">Yesterday</div>
-                    </div>
-                </div>
-                <a href="#" class="view-all-link">View All Activity →</a>
-            </div>
-
-            <!-- Performance Badge -->
-            <div class="sidebar-card badge-card">
-                <h3>🏆 Top Performer</h3>
-                <p>You're in the top 5% of doctors this month!</p>
-                <button class="badge-btn">View Badge</button>
-            </div>
-        </aside>
+        </div>
     </div>
 
-    <script src="doctor.js"></script>
-<script>
-console.log('=== DIRECT TEST SCRIPT ===');
+    <script>
+        function openMenu() {
+            document.getElementById('mobileMenu').classList.add('show');
+            document.getElementById('menuOverlay').classList.add('show');
+            document.body.style.overflow = 'hidden';
+        }
 
-// Test if button exists
-const testBtn = document.getElementById('mobileMenuBtn');
-console.log('Button found?', !!testBtn);
-
-if (testBtn) {
-    console.log('Button element:', testBtn);
-    
-    // Direct onclick test
-    testBtn.onclick = function() {
-        alert('BUTTON CLICKED!');
-        console.log('Button was clicked!');
-        
-        const menu = document.getElementById('mobileMenu');
-        const overlay = document.getElementById('mobileMenuOverlay');
-        
-        console.log('Menu found?', !!menu);
-        console.log('Overlay found?', !!overlay);
-        
-        if (menu) menu.classList.add('active');
-        if (overlay) overlay.classList.add('active');
-    };
-    
-    console.log('Direct onclick handler attached');
-} else {
-    console.error('BUTTON NOT FOUND!');
-}
-</script>
-
+        function closeMenu() {
+            document.getElementById('mobileMenu').classList.remove('show');
+            document.getElementById('menuOverlay').classList.remove('show');
+            document.body.style.overflow = '';
+        }
+    </script>
 </body>
 </html>
