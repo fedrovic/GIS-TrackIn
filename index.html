@@ -298,5 +298,36 @@
     </div>
 
     <script src="doctor.js"></script>
+<script>
+console.log('=== DIRECT TEST SCRIPT ===');
+
+// Test if button exists
+const testBtn = document.getElementById('mobileMenuBtn');
+console.log('Button found?', !!testBtn);
+
+if (testBtn) {
+    console.log('Button element:', testBtn);
+    
+    // Direct onclick test
+    testBtn.onclick = function() {
+        alert('BUTTON CLICKED!');
+        console.log('Button was clicked!');
+        
+        const menu = document.getElementById('mobileMenu');
+        const overlay = document.getElementById('mobileMenuOverlay');
+        
+        console.log('Menu found?', !!menu);
+        console.log('Overlay found?', !!overlay);
+        
+        if (menu) menu.classList.add('active');
+        if (overlay) overlay.classList.add('active');
+    };
+    
+    console.log('Direct onclick handler attached');
+} else {
+    console.error('BUTTON NOT FOUND!');
+}
+</script>
+
 </body>
 </html>
