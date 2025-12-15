@@ -8,16 +8,8 @@
     padding: 0;
     box-sizing: border-box;
 }
-.no-sidebar .left-sidebar {
+.no-sidebar .mobile-menu-btn {
     display: none !important;
-}
-
-.no-sidebar .main-content {
-    margin-left: 0 !important;
-}
-
-.no-sidebar .container {
-    padding-left: 20px !important;
 }
 
 body {
