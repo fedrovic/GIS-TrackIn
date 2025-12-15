@@ -117,13 +117,13 @@ document.addEventListener('DOMContentLoaded', function() {
                 
                 switch(dataPage) {
                     case 'questions-feed':
-                        alert('📋 Questions Feed\n\nThis page is being worked on by your teammate.\n\nIt will show:\n• All pending patient questions\n• Filter by urgency and specialty\n• Search and sort options\n• Quick answer interface');
+                        alert('📋 Questions Feed\n\n question page.\n\nIt will show:\n• All pending patient questions\n• Filter by urgency and specialty\n• Search and sort options\n• Quick answer interface');
                         break;
                     case 'my-patients':
-                        alert('👥 My Patients\n\nThis page is being worked on by your teammate.\n\nIt will show:\n• All patients you\'ve consulted\n• Medical history and records\n• Upcoming appointments\n• Past consultations\n• Patient notes');
+                        alert('👥 My Patients\n\nAfter I will work on my-patients page.\n\nIt will show:\n• All patients you\'ve consulted\n• Medical history and records\n• Upcoming appointments\n• Past consultations\n• Patient notes');
                         break;
                     case 'appointments':
-                        alert('📅 Appointments\n\nThis page is being worked on by your teammate.\n\nIt will show:\n• Full appointment calendar\n• Daily/Weekly/Monthly view\n• Appointment requests\n• Reschedule options\n• Availability management');
+                        alert('📅 Appointments\n\nDembe should work on appointments page.\n\nIt will show:\n• Full appointment calendar\n• Daily/Weekly/Monthly view\n• Appointment requests\n• Reschedule options\n• Availability management');
                         break;
                     case 'medical-library':
                         closeMobileMenu();
@@ -161,7 +161,7 @@ document.addEventListener('DOMContentLoaded', function() {
             // If it's just #, prevent default
             if (href === '#') {
                 e.preventDefault();
-                alert(`📱 ${text}\n\nThis feature is being worked on by your teammate.`);
+                alert(`📱 ${text}\n\nThis part will be worked on soon.`);
                 closeMobileMenu();
             }
         });
@@ -232,7 +232,7 @@ document.addEventListener('DOMContentLoaded', function() {
     askQuestionBtns.forEach(btn => {
         btn.addEventListener('click', function() {
             console.log('❓ Ask Question button clicked');
-            alert('❓ Ask a Question\n\nThe question form is being worked on by your teammate.\nIt will allow patients to ask medical questions to verified doctors.');
+            alert('❓ Ask a Question\n\n I will allocate question form to Frankie.\nIt will allow patients to ask medical questions to verified doctors.');
         });
     });
     
@@ -284,15 +284,15 @@ document.addEventListener('DOMContentLoaded', function() {
             } else if (text.includes('Settings')) {
                 alert('⚙️ Settings\n\nThis page is being worked on by your teammate.');
             } else if (text.includes('Pediatrics') || text.includes('Pregnancy') || text.includes('Infectious') || text.includes('Sexual') || text.includes('Mental')) {
-                alert(`📚 ${text}\n\nTopic page is being worked on by your teammate.\nIt will show all questions and articles related to this medical specialty.`);
+                alert(`📚 ${text}\n\nTopic I will work on this latar.\nIt will show all questions and articles related to this medical specialty.`);
             } else if (text.includes('Emergency Contacts')) {
-                alert('🚨 Emergency Contacts\n\nThis page is being worked on by your teammate.');
+                alert('🚨 Emergency Contacts\n\n emergency being worked on tofaayo.');
             } else if (text.includes('Admin Panel')) {
-                alert('🔧 Admin Panel\n\nThis page is being worked on by your teammate.');
+                alert('🔧 Admin Panel\n\n being worked on.');
             } else if (text.includes('Medical Centres')) {
-                alert('🏥 Medical Centres Directory\n\nThis page is being worked on by your teammate.');
+                alert('🏥 Medical Centres Directory\n\n being worked on.');
             } else if (text.includes('Home')) {
-                alert('🏠 Home Page\n\nThis page is being worked on by your teammate.');
+                alert('🏠 Home Page\n\n Being worked on.');
             }
         });
     });
@@ -303,7 +303,7 @@ document.addEventListener('DOMContentLoaded', function() {
         btn.addEventListener('click', function(e) {
             e.preventDefault();
             console.log('📚 See all topics clicked');
-            alert('📚 All Medical Topics\n\nThis page is being worked on by your teammate.\n\nIt will show all medical specialties:\n\n• Pediatrics\n• Pregnancy & Obstetrics\n• Cardiology\n• Dermatology\n• Neurology\n• Infectious Diseases\n• Sexual Health\n• Mental Health\n• General Medicine\n• Surgery\n• And more...');
+            alert('📚 All Medical Topics\n\nThis is what I will work on.\n\nIt will show all medical specialties:\n\n• Pediatrics\n• Pregnancy & Obstetrics\n• Cardiology\n• Dermatology\n• Neurology\n• Infectious Diseases\n• Sexual Health\n• Mental Health\n• General Medicine\n• Surgery\n• And more...');
             
             // Close mobile menu if open
             const mobileMenu = document.getElementById('mobileMenu');
@@ -358,7 +358,7 @@ document.addEventListener('DOMContentLoaded', function() {
         item.addEventListener('click', function() {
             const title = this.querySelector('.trending-title').textContent;
             console.log('📈 Trending item clicked:', title);
-            alert(`📈 ${title}\n\nTrending topic details page is being worked on by your teammate.\n\nThis will show:\n• Latest discussions\n• Expert opinions\n• Related articles\n• Community updates`);
+            alert(`📈 ${title}\n\nTrending topic details page is being worked on .\n\nThis will show:\n• Latest discussions\n• Expert opinions\n• Related articles\n• Community updates`);
         });
     });
     
@@ -370,7 +370,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const context = this.closest('.section-card, .sidebar-card');
             const heading = context ? context.querySelector('h2, h3')?.textContent : 'items';
             console.log('👀 View all clicked:', heading);
-            alert(`👀 View All ${heading}\n\nThe full page is being worked on by your teammate.\n\nIt will show complete list with:\n• Filters\n• Search\n• Sorting options\n• Pagination`);
+            alert(`👀 View All ${heading}\n\nThe full page is being worked.\n\nIt will show complete list with:\n• Filters\n• Search\n• Sorting options\n• Pagination`);
         });
     });
     
@@ -407,7 +407,7 @@ document.addEventListener('DOMContentLoaded', function() {
             
             const questionText = this.querySelector('.question-text').textContent;
             console.log('👀 Question card clicked:', questionText);
-            alert(`👀 View Full Question\n\nQuestion: "${questionText}"\n\nThe full question details page is being worked on by your teammate.\n\nYou will see:\n• Complete question with images\n• Patient's medical history\n• Previous answers\n• Related questions`);
+            alert(`👀 View Full Question\n\nQuestion: "${questionText}"\n\nThe full question details page is being worked on .\n\nYou will see:\n• Complete question with images\n• Patient's medical history\n• Previous answers\n• Related questions`);
         });
     });
     
@@ -425,10 +425,10 @@ console.log(' Appointment button clicked:', appointmentTitle);
 
 if (this.classList.contains('primary')) {
 // Join Call button
-alert(` Joining Video Call\n\n${appointmentTitle}\n${appointmentDetails}\n\n Connecting to video consultation...\n\nThe video call feature is being worked on by your teammate.\n\nYou will be able to: \n Video/audio consultation\n Screen sharing\n Chat during call\n Record session (with consent)\n Prescribe medication `);
+alert(` Joining Video Call\n\n${appointmentTitle}\n${appointmentDetails}\n\n Connecting to video consultation...\n\nThe video call feature is being worked on .\n\nYou will be able to: \n Video/audio consultation\n Screen sharing\n Chat during call\n Record session (with consent)\n Prescribe medication `);
 } else {
 // View Details button
-[span_78](start_span)alert(` Appointment Details\n\n${appointmentTitle}\n${appointmentDetails}\n\nThe appointment details page is being worked on by your teammate.\n\nYou will see: \n Patient information\n Medical history\n• Reason for visit\n Previous consultations\n Test results\n Options to reschedule/cancel`);[span_78](end_span)
+[span_78](start_span)alert(` Appointment Details\n\n${appointmentTitle}\n${appointmentDetails}\n\nThe appointment details page is being worked on .\n\nYou will see: \n Patient information\n Medical history\n• Reason for visit\n Previous consultations\n Test results\n Options to reschedule/cancel`);[span_78](end_span)
 }
 
 });
@@ -493,7 +493,7 @@ message += 'Follower growth:\n• This month: +96 followers\n• This week: +18 
 [span_94](start_span)} else if (label.includes('Response')) {[span_94](end_span)
 message += 'Response time trends:\n• Average: 1 hour\n• Fastest: 5 minutes\n• Within 1 hour: 85%\n• Within 3 hours: 95%\n\nThis is excellent! [span_95](start_span)You\'re faster than 92% of[span_95](end_span) [span_96](start_span)doctors.\n\nFull response analytics is being worked on by your teammate.';[span_96](end_span)
 [span_97](start_span)} else if (label.includes('Rating')) {[span_97](end_span)
-message += 'Rating breakdown:\n• 5 stars: 92%\n• 4 stars: 6%\n• 3 stars: 2%\n• 2 stars: 0%\n• 1 star: 0%\n\nRecent reviews:\n"Very helpful and patient!" [span_98](start_span)⭐⭐⭐⭐⭐\n"Quick response, clear advice" ⭐⭐⭐⭐⭐\n\nFull ratings page is being worked on by your teammate.';[span_98](end_span)
+message += 'Rating breakdown:\n• 5 stars: 92%\n• 4 stars: 6%\n• 3 stars: 2%\n• 2 stars: 0%\n• 1 star: 0%\n\nRecent reviews:\n"Very helpful and patient!" [span_98](start_span)⭐⭐⭐⭐⭐\n"Quick response, clear advice" ⭐⭐⭐⭐⭐\n\nFull ratings page is being worked on .';[span_98](end_span)
 }
 
 alert(message);
@@ -618,7 +618,7 @@ console.log('📅 Book Appointment clicked');
 heading.addEventListener('click', function() {
 const questionText = this.textContent;
 console.log('💬 Answer clicked:', questionText);
-alert(`💬 Full Answer\n\nQuestion: "${questionText}"\n\nOpening full answer with discussion...\n\nThe full answer page is being worked on by your teammate.\n\nYou will see:\n• Complete answer with images\n• Comments and follow-ups\n• Related questions\n• Patient feedback\n• Share options`);
+alert(`💬 Full Answer\n\nQuestion: "${questionText}"\n\nOpening full answer with discussion...\n\nThe full answer page is being work.\n\nYou will see:\n• Complete answer with images\n• Comments and follow-ups\n• Related questions\n• Patient feedback\n• Share options`);
 });
 }
 [span_135](start_span)});[span_135](end_span)
@@ -653,7 +653,7 @@ this.style.fontWeight = '';
 [span_142](start_span)meta.addEventListener('click', function(e) {[span_142](end_span)
 e.stopPropagation();
 console.log('💬 Comments clicked');
-alert('💬 Comments Section\n\nThe comments/discussion feature is being worked on by your teammate.\n\nUsers will be able to:\n• Read all comments\n• Reply to comments\n• React to comments\n• Report inappropriate content');
+alert('💬 Comments Section\n\nThe comments/discussion feature is being worked.\n\nUsers will be able to:\n• Read all comments\n• Reply to comments\n• React to comments\n• Report inappropriate content');
 [span_143](start_span)});[span_143](end_span)
 }
 });
