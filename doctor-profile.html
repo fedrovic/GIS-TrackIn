@@ -1,292 +1,274 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dr. Sarah Nabirye - Agocare</title>
-    <link rel="stylesheet" href="doctor.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dr. Sarah Nabirye - Agocare</title>
+<link rel="stylesheet" href="doctor.css">
 </head>
-<body class="no-sidebar">
-    <!-- Mobile Menu Overlay -->
-    <div class="mobile-menu-overlay" id="mobileMenuOverlay"></div>
-    
-    <!-- Mobile Menu -->
-    <div class="mobile-menu" id="mobileMenu">
-        <div class="mobile-menu-header">
-            <h2>Menu</h2>
-            <button class="mobile-menu-close" id="mobileMenuClose">×</button>
-        </div>
-        
-        <div class="mobile-menu-content">
-            <div class="mobile-menu-section">
-                <div class="mobile-menu-label">MAIN</div>
-                <a href="doctor-dashboard.html" class="mobile-menu-item">
-                    <span class="nav-icon">🏠</span>
-                    <span>Dashboard</span>
-                </a>
-                <a href="#" class="mobile-menu-item" data-page="questions-feed">
-                    <span class="nav-icon">❓</span>
-                    <span>Questions Feed</span>
-                </a>
-                <a href="#" class="mobile-menu-item" data-page="my-patients">
-                    <span class="nav-icon">👥</span>
-                    <span>My Patients</span>
-                </a>
-                <a href="#" class="mobile-menu-item" data-page="appointments">
-                    <span class="nav-icon">📅</span>
-                    <span>Appointments</span>
-                </a>
-            </div>
-            
-            <div class="mobile-menu-section">
-                <div class="mobile-menu-label">RESOURCES</div>
-                <a href="#" class="mobile-menu-item" data-page="medical-library">
-                    <span class="nav-icon">📚</span>
-                    <span>Medical Library</span>
-                </a>
-                <a href="#" class="mobile-menu-item" data-page="analytics">
-                    <span class="nav-icon">📊</span>
-                    <span>Analytics</span>
-                </a>
-                <a href="#" class="mobile-menu-item" data-page="settings">
-                    <span class="nav-icon">⚙️</span>
-                    <span>Settings</span>
-                </a>
-            </div>
-            
-            <div class="mobile-menu-section">
-                <div class="mobile-menu-label">ACCOUNT</div>
-                <div class="mobile-menu-profile">
-                    <div class="user-avatar">DN</div>
-                    <div>
-                        <div class="mobile-profile-name">Dr. Nabirye</div>
-                        <div class="mobile-profile-specialty">Pediatrician</div>
-                    </div>
-                </div>
-                <a href="doctor-profile.html" class="mobile-menu-item active">
-                    <span class="nav-icon">👤</span>
-                    <span>My Profile</span>
-                </a>
-                <a href="#" class="mobile-menu-item" data-page="logout">
-                    <span class="nav-icon">🚪</span>
-                    <span>Logout</span>
-                </a>
-            </div>
-        </div>
-    </div>
+<body>
+<!-- Mobile Menu Overlay -->
+<div class="mobile-menu-overlay" id="mobileMenuOverlay"></div>
 
-    <!-- Header -->
-    <header>
-        <div class="header-left">
-            <button class="mobile-menu-btn" id="mobileMenuBtn">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-            <div class="logo">Ago<span>care</span></div>
-            <div class="header-icons desktop-only">
-                <button class="icon-btn">📍</button>
-                <button class="icon-btn">🔔</button>
-                <button class="icon-btn">👤</button>
-            </div>
-            <div class="search-bar desktop-only">
-                <span>🔍</span>
-                <input type="text" placeholder="Search Agocare...">
-            </div>
-        </div>
-        <div class="header-right">
-            <div class="user-info desktop-only">
-                <div class="user-avatar">DN</div>
-                <span>Dr. Nabirye</span>
-            </div>
-            <button class="ask-question-btn">Ask Question</button>
-        </div>
-    </header>
+<!-- Mobile Menu -->
+<div class="mobile-menu" id="mobileMenu">
+<div class="mobile-menu-header">
+<h2>Menu</h2>
+<button class="mobile-menu-close" id="mobileMenuClose">×</button>
+</div>
+<div class="mobile-menu-content">
+<div class="mobile-menu-section">
+<div class="mobile-menu-label">MAIN</div>
+<a href="doctor-dashboard.html" class="mobile-menu-item">
+<span class="nav-icon">🏠</span>
+<span>Dashboard</span>
+</a>
+<a href="questions-feed.html" class="mobile-menu-item">
+<span class="nav-icon">❓</span>
+<span>Questions Feed</span>
+</a>
+<a href="my-patients.html" class="mobile-menu-item">
+<span class="nav-icon">👥</span>
+<span>My Patients</span>
+</a>
+<a href="appointments.html" class="mobile-menu-item">
+<span class="nav-icon">📅</span>
+<span>Appointments</span>
+</a>
+</div>
+<div class="mobile-menu-section">
+<div class="mobile-menu-label">RESOURCES</div>
+<a href="medical-library.html" class="mobile-menu-item">
+<span class="nav-icon">📚</span>
+<span>Medical Library</span>
+</a>
+<a href="analytics.html" class="mobile-menu-item">
+<span class="nav-icon">📊</span>
+<span>Analytics</span>
+</a>
+<a href="settings.html" class="mobile-menu-item">
+<span class="nav-icon">⚙</span>
+<span>Settings</span>
+</a>
+</div>
+<div class="mobile-menu-section">
+<div class="mobile-menu-label">ACCOUNT</div>
+<div class="mobile-menu-profile">
+<div class="user-avatar">DN</div>
+<div>
+<div class="mobile-profile-name">Dr. Nabirye</div>
+<div class="mobile-profile-specialty">Pediatrician</div>
+</div>
+</div>
+<a href="doctor-profile.html" class="mobile-menu-item active">
+<span class="nav-icon">👤</span>
+<span>My Profile</span>
+</a>
+<a href="#" class="mobile-menu-item" onclick="handleLogout(); return false;">
+<span class="nav-icon">🚪</span>
+<span>Logout</span>
+</a>
+</div>
+</div>
+</div>
 
-    <!-- Main Container -->
-    <div class="container">
-        <!-- Left Sidebar (Desktop Only) - DOCTOR SIDEBAR -->
-        <aside class="left-sidebar desktop-only">
-            <nav class="nav-section">
-                <div class="category-header">MAIN</div>
-                <a href="doctor-dashboard.html" class="nav-item">
-                    <span class="nav-icon">🏠</span>
-                    <span>Dashboard</span>
-                </a>
-                <a href="#" class="nav-item">
-                    <span class="nav-icon">❓</span>
-                    <span>Questions Feed</span>
-                </a>
-                <a href="#" class="nav-item">
-                    <span class="nav-icon">👥</span>
-                    <span>My Patients</span>
-                </a>
-                <a href="#" class="nav-item">
-                    <span class="nav-icon">📅</span>
-                    <span>Appointments</span>
-                </a>
-            </nav>
+<!-- Header -->
+<header>
+<div class="header-left">
+<button class="mobile-menu-btn" id="mobileMenuBtn">
+<span></span>
+<span></span>
+<span></span>
+</button>
+<div class="logo">Ago<span>care</span></div>
+<div class="header-icons desktop-only">
+<button class="icon-btn">📍</button>
+<button class="icon-btn">🔔</button>
+<button class="icon-btn">👤</button>
+</div>
+<div class="search-bar desktop-only">
+<span>🔍</span>
+<input type="text" placeholder="Search Agocare...">
+</div>
+</div>
+<div class="header-right">
+<div class="user-info desktop-only">
+<div class="user-avatar">DN</div>
+<span>Dr. Nabirye</span>
+</div>
+<button class="ask-question-btn">Ask Question</button>
+</div>
+</header>
 
-            <div class="nav-section">
-                <div class="category-header">RESOURCES</div>
-                <a href="medical-library.html" class="nav-item">
-                    <span class="nav-icon">📚</span>
-                    <span>Medical Library</span>
-                </a>
-                <a href="analytics.html" class="nav-item">
-                    <span class="nav-icon">📊</span>
-                    <span>Analytics</span>
-                </a>
-                <a href="settings.html" class="nav-item">
-                    <span class="nav-icon">⚙️</span>
-                    <span>Settings</span>
-                </a>
-            </div>
-        </aside>
+<!-- Main Container -->
+<div class="container">
+<!-- Left Sidebar (Desktop Only) - DOCTOR SIDEBAR -->
+<aside class="left-sidebar desktop-only">
+<nav class="nav-section">
+<div class="category-header">MAIN</div>
+<a href="doctor-dashboard.html" class="nav-item">
+<span class="nav-icon">🏠</span>
+<span>Dashboard</span>
+</a>
+<a href="questions-feed.html" class="nav-item">
+<span class="nav-icon">❓</span>
+<span>Questions Feed</span>
+</a>
+<a href="my-patients.html" class="nav-item">
+<span class="nav-icon">👥</span>
+<span>My Patients</span>
+</a>
+<a href="appointments.html" class="nav-item">
+<span class="nav-icon">📅</span>
+<span>Appointments</span>
+</a>
+</nav>
+<div class="nav-section">
+<div class="category-header">RESOURCES</div>
+<a href="medical-library.html" class="nav-item">
+<span class="nav-icon">📚</span>
+<span>Medical Library</span>
+</a>
+<a href="analytics.html" class="nav-item">
+<span class="nav-icon">📊</span>
+<span>Analytics</span>
+</a>
+<a href="settings.html" class="nav-item">
+<span class="nav-icon">⚙</span>
+<span>Settings</span>
+</a>
+</div>
+</aside>
 
-        <!-- Main Content -->
-        <main class="main-content profile-content">
-            <!-- Back Button -->
-            <a href="doctor-dashboard.html" class="back-link">← Back to Dashboard</a>
+<!-- Main Content -->
+<main class="main-content profile-content">
+<!-- Back Button -->
+<a href="doctor-dashboard.html" class="back-link">← Back to Dashboard</a>
 
-            <!-- Profile Header -->
-            <div class="profile-header">
-                <div class="profile-cover"></div>
-                <div class="profile-info">
-                    <div class="profile-avatar-large">👨‍⚕️</div>
-                    <div class="profile-details">
-                        <h1>Dr. Sarah Nabirye <span class="verified-badge">✓ Verified</span></h1>
-                        <p class="profile-specialty">Pediatrician • Mulago National Referral Hospital</p>
-                        <div class="profile-stats">
-                            <span><strong>450</strong> Answers</span>
-                            <span><strong>1.2K</strong> Followers</span>
-                            <span class="response-time">⏱ 1 hr response</span>
-                        </div>
-                    </div>
-                    <div class="profile-actions">
-                        <button class="btn-edit-profile" onclick="alert('Opening profile editor...')">Edit Profile</button>
-                        <button class="btn-view-public" onclick="alert('Viewing public profile...')">View Public Profile</button>
-                    </div>
-                </div>
-            </div>
+<!-- Profile Header -->
+<div class="profile-header">
+<div class="profile-cover"></div>
+<div class="profile-info">
+<div class="profile-avatar-large">🧑‍⚕️</div>
+<div class="profile-details">
+<h1>Dr. Sarah Nabirye <span class="verified-badge">✓ Verified</span></h1>
+<p class="profile-specialty">Pediatrician • Mulago National Referral Hospital</p>
+<div class="profile-stats">
+<span><strong>450</strong> Answers</span>
+<span><strong>1.2K</strong> Followers</span>
+<span class="response-time">⏱ 1 hr response</span>
+</div>
+</div>
+<div class="profile-actions">
+<button class="btn-edit-profile" onclick="editProfile()">Edit Profile</button>
+<button class="btn-view-public" onclick="viewPublicProfile()">View Public Profile</button>
+</div>
+</div>
+</div>
 
-            <!-- About Section -->
-            <div class="section-card">
-                <div class="section-tabs">
-                    <button class="tab-btn active">About</button>
-                    <button class="tab-btn">Availability</button>
-                </div>
+<!-- About Section -->
+<div class="section-card">
+<div class="section-tabs">
+<button class="tab-btn active">About</button>
+<button class="tab-btn">Availability</button>
+</div>
+<div class="tab-content active" id="about-tab">
+<h3>About</h3>
+<p>Dr. Sarah is a dedicated Pediatrician with over 10 years of experience at Mulago National Referral Hospital. Passionate about community health education and preventative care. Specialized in treating pediatric infections and developmental disorders.</p>
+<h3 style="margin-top: 24px;">Credentials</h3>
+<ul class="credentials-list">
+<li>MBChB, Makerere University Medical School</li>
+<li>Master of Medicine in Pediatrics, Mbarara University of Science and Technology</li>
+<li>Registered with Uganda Medical and Dental Practitioners Council</li>
+</ul>
+<button class="btn-book-appointment" onclick="bookAppointment()">Book Appointment</button>
+</div>
+<div class="tab-content" id="availability-tab">
+<h3>Availability</h3>
+<div class="availability-info">
+<div class="availability-item">
+<strong>Mon - Fri</strong>
+<span>9:00 AM - 5:00 PM</span>
+</div>
+<div class="availability-item">
+<strong>Sat</strong>
+<span>10:00 AM - 2:00 PM</span>
+</div>
+</div>
+<button class="btn-book-appointment" onclick="bookAppointment()">Book Appointment</button>
+</div>
+</div>
 
-                <div class="tab-content active" id="about-tab">
-                    <h3>About</h3>
-                    <p>Dr. Sarah is a dedicated Pediatrician with over 10 years of experience at Mulago National Referral Hospital. Passionate about community health education and preventative care. Specialized in treating pediatric infections and developmental disorders.</p>
+<!-- Recent Answers Section -->
+<div class="section-card">
+<h2>Recent Answers</h2>
+<div class="answer-item">
+<h4>Can I give my baby honey for cough?</h4>
+<p>No, you should not give honey to an infant under 1 year old due to the risk of botulism...</p>
+<div class="answer-meta">
+<span>👍 45 likes</span>
+<span>💬 12 comments</span>
+<span>2 days ago</span>
+</div>
+</div>
+<div class="answer-item">
+<h4>Best way to treat heat rash?</h4>
+<p>Keep the area cool and dry. Use calamine lotion if itching persists...</p>
+<div class="answer-meta">
+<span>👍 32 likes</span>
+<span>💬 8 comments</span>
+<span>5 days ago</span>
+</div>
+</div>
+<div class="answer-item">
+<h4>When should I start solid foods for my baby?</h4>
+<p>Most babies are ready for solid foods around 6 months. Look for signs like sitting with support and showing interest in food...</p>
+<div class="answer-meta">
+<span>👍 67 likes</span>
+<span>💬 23 comments</span>
+<span>1 week ago</span>
+</div>
+</div>
+<a href="#" class="view-all-link">View All Answers →</a>
+</div>
+</main>
 
-                    <h3 style="margin-top: 24px;">Credentials</h3>
-                    <ul class="credentials-list">
-                        <li>MBChB, Makerere University Medical School</li>
-                        <li>Master of Medicine in Pediatrics, Mbarara University of Science and Technology</li>
-                        <li>Registered with Uganda Medical and Dental Practitioners Council</li>
-                    </ul>
+<!-- Right Sidebar (Desktop Only) -->
+<aside class="right-sidebar desktop-only">
+<div class="urgent-help-card">
+<h3>Need Urgent Help?</h3>
+<p>Connect with verified specialists instantly via chat or video.</p>
+<button class="talk-to-doctor-btn">🩺 Talk to Doctor</button>
+</div>
+<div class="trending-card">
+<h3>Trending in Uganda</h3>
+<div class="trending-item">
+<div class="trending-title">Fake Drugs</div>
+<div class="trending-subtitle">Malaria Prevention in Rainy Season</div>
+</div>
+<div class="trending-item">
+<div class="trending-title">Red Eye (Conjunctivitis) Alert</div>
+<div class="trending-subtitle">Jinja Hospital</div>
+</div>
+<div class="trending-item">
+<div class="trending-title">Free Antenatal Care Camps</div>
+</div>
+<div class="trending-divider"></div>
+<div class="top-contributor">
+<h4>Top Contributor</h4>
+<div class="contributor-profile">
+<div class="contributor-avatar">🧑‍⚕️</div>
+<div>
+<strong>Dr. Sarah Nabirye</strong>
+<div class="contributor-stats">Pediatrician · 140 Answers</div>
+</div>
+</div>
+<button class="follow-btn">Follow</button>
+</div>
+</div>
+</aside>
+</div>
 
-                    <button class="btn-book-appointment">Book Appointment</button>
-                </div>
-
-                <div class="tab-content" id="availability-tab">
-                    <h3>Availability</h3>
-                    <div class="availability-info">
-                        <div class="availability-item">
-                            <strong>Mon - Fri</strong>
-                            <span>9:00 AM - 5:00 PM</span>
-                        </div>
-                        <div class="availability-item">
-                            <strong>Sat</strong>
-                            <span>10:00 AM - 2:00 PM</span>
-                        </div>
-                    </div>
-                    <button class="btn-book-appointment">Book Appointment</button>
-                </div>
-            </div>
-
-            <!-- Recent Answers Section -->
-            <div class="section-card">
-                <h2>Recent Answers</h2>
-
-                <div class="answer-item">
-                    <h4>Can I give my baby honey for cough?</h4>
-                    <p>No, you should not give honey to an infant under 1 year old due to the risk of botulism...</p>
-                    <div class="answer-meta">
-                        <span>👍 45 likes</span>
-                        <span>💬 12 comments</span>
-                        <span>2 days ago</span>
-                    </div>
-                </div>
-
-                <div class="answer-item">
-                    <h4>Best way to treat heat rash?</h4>
-                    <p>Keep the area cool and dry. Use calamine lotion if itching persists...</p>
-                    <div class="answer-meta">
-                        <span>👍 32 likes</span>
-                        <span>💬 8 comments</span>
-                        <span>5 days ago</span>
-                    </div>
-                </div>
-
-                <div class="answer-item">
-                    <h4>When should I start solid foods for my baby?</h4>
-                    <p>Most babies are ready for solid foods around 6 months. Look for signs like sitting with support and showing interest in food...</p>
-                    <div class="answer-meta">
-                        <span>👍 67 likes</span>
-                        <span>💬 23 comments</span>
-                        <span>1 week ago</span>
-                    </div>
-                </div>
-
-                <a href="#" class="view-all-link">View All Answers →</a>
-            </div>
-        </main>
-
-        <!-- Right Sidebar (Desktop Only) -->
-        <aside class="right-sidebar desktop-only">
-            <div class="urgent-help-card">
-                <h3>Need Urgent Help?</h3>
-                <p>Connect with verified specialists instantly via chat or video.</p>
-                <button class="talk-to-doctor-btn">🩺 Talk to Doctor</button>
-            </div>
-
-            <div class="trending-card">
-                <h3>Trending in Uganda</h3>
-                
-                <div class="trending-item">
-                    <div class="trending-title">Fake Drugs</div>
-                    <div class="trending-subtitle">Malaria Prevention in Rainy Season</div>
-                </div>
-
-                <div class="trending-item">
-                    <div class="trending-title">Red Eye (Conjunctivitis) Alert</div>
-                    <div class="trending-subtitle">Jinja Hospital</div>
-                </div>
-
-                <div class="trending-item">
-                    <div class="trending-title">Free Antenatal Care Camps</div>
-                </div>
-
-                <div class="trending-divider"></div>
-
-                <div class="top-contributor">
-                    <h4>Top Contributor</h4>
-                    <div class="contributor-profile">
-                        <div class="contributor-avatar">👨‍⚕️</div>
-                        <div>
-                            <strong>Dr. Sarah Nabirye</strong>
-                            <div class="contributor-stats">Pediatrician · 140 Answers</div>
-                        </div>
-                    </div>
-                    <button class="follow-btn">Follow</button>
-                </div>
-            </div>
-        </aside>
-    </div>
-
-    <script src="doctor.js"></script>
+<script src="doctor.js"></script>
 </body>
 </html>
