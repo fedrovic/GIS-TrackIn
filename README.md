@@ -1,2 +1,0 @@
-# GIS-TrackIn
-Simple tracking 
